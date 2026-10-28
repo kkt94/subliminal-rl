@@ -1,4 +1,4 @@
-"""Extended Data Table 6 ("The state of training, one row per cell"): tabs/time.tex.
+"""Extended Data Table 5 ("The state of training, one row per cell"): tabs/time.tex.
 
 Carrier validity at steps 2, 48 and 80 and in the lowest run at step 80; the share
 of groups whose eight completions do not all receive the same reward (reward-signal

@@ -1,4 +1,4 @@
-"""Extended Data Table 5 ("Reward intervention"): tabs/alpha.tex.
+"""Extended Data Table 4 ("Reward intervention"): tabs/alpha.tex.
 
 Training on c + alpha * s, where c is the part of the reward shared by the two
 judges and s the between-judge part; eight seed pairs per condition. For each

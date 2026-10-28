@@ -1,4 +1,4 @@
-"""Extended Data Table 3 ("Transfer on a cell's further seed pairs, and the combination of the two groups"): further_pairs.tex.
+"""Extended Data Table 2 ("Transfer on a cell's further seed pairs, and the combination of the two groups"): further_pairs.tex.
 
 For the 35 cells with seed pairs beyond the base eight: S80 over the further
 pairs alone with its bootstrap 95% interval, pairs in the judge's direction,

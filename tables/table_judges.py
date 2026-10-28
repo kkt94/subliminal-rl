@@ -1,4 +1,4 @@
-"""Extended Data Table 7 ("Judges that are not the student's own model"): tabs/judge.tex.
+"""Extended Data Table 6 ("Judges that are not the student's own model"): tabs/judge.tex.
 
 For each route and student, the main-grid judges (the student's own model) beside
 the other family's 1B-class judges and 8B judges of either family: mean emission

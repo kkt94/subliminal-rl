@@ -1,6 +1,6 @@
 """Behaviour: from the preference margin to the answer.
 
-Paper parts: Methods, "Behaviour"; the "Behaviour" column of Extended Data Table 1;
+Paper parts: Methods, "Behaviour"; the "Behaviour" column of Table 1;
 Fig. "behaviour" (a: name-form margins; c: cells measured at each layer);
 Supplementary Note "From the preference margin to the answer"; the BH statement
 for sampled answers in Methods, "Statistics".
@@ -36,7 +36,7 @@ pairs of a cell (all 2^n sign assignments).
    two-sided sign-flip p of the direct-answer effect.
 3. Name forms (``subliminal_rl.evaluation.name_forms``): seed-pair effects of the
    four per-form margins.
-4. Per-cell behaviour entry of Extended Data Table 1 (``behaviour_entry``).
+4. Per-cell behaviour entry of Table 1 (``behaviour_entry``).
 
 CPU only. Command line: ``python -m subliminal_rl.analysis.behaviour --help``.
 """
@@ -332,7 +332,7 @@ def name_form_effects(form_records, pairs):
 
 
 # ---------------------------------------------------------------------------
-# 4. Per-cell behaviour entry (Extended Data Table 1)
+# 4. Per-cell behaviour entry (Table 1)
 # ---------------------------------------------------------------------------
 
 def _fmt_p(p):

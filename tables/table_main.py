@@ -1,4 +1,4 @@
-"""Extended Data Table 1 ("The four stages, one row per cell"): tabs/main.tex.
+"""Table 1 ("The four stages, one row per cell"): tabs/main.tex.
 
 One row per design cell (48, with the two cells excluded at the carrier-validity
 gate): emission Lambda and absorption at the starting policy with 95% intervals,

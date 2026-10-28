@@ -1,4 +1,4 @@
-"""Extended Data Table 4 ("Carrier channel decomposition, one row per cell"): tabs/chan.tex.
+"""Extended Data Table 3 ("Carrier channel decomposition, one row per cell"): tabs/chan.tex.
 
 Absorption (training instance, start-policy standardized score difference) split
 into the part carried by the carrier's surface features (letters and bigrams for

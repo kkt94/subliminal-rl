@@ -2,8 +2,8 @@
 
     python tables/make_all.py --out <directory> [--data data]
 
-Table 1 (dispositional traits) -> disp.tex; Extended Data Tables 1-7 -> main.tex,
-judge_movement.tex, further_pairs.tex, chan.tex, alpha.tex, time.tex, judge.tex.
+Table 1 (the four stages per cell) -> main.tex; Table 2 (dispositional traits) -> disp.tex;
+Extended Data Tables 1-6 -> judge_movement.tex, further_pairs.tex, chan.tex, alpha.tex, time.tex, judge.tex.
 """
 import common as C
 import table_alpha

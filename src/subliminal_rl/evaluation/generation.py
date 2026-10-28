@@ -2,7 +2,7 @@
 
 Paper parts: Methods, "Behaviour" (generation test); Supplementary Note "From the
 preference margin to the answer"; the sampled-answer entries of the "Behaviour"
-column of Extended Data Table 1.
+column of Table 1.
 
 What it computes, for one cell (one student model and one trait pair):
 

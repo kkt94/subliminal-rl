@@ -1,4 +1,4 @@
-"""Table 1 ("Dispositional traits, twelve cells"): tabs/disp.tex.
+"""Table 2 ("Dispositional traits, twelve cells"): tabs/disp.tex.
 
 System-prompt judges, 40 seed pairs per cell. For each cell: emission Lambda (eight
 wordings per judge) with its 95% interval, absorption and the baseline preference

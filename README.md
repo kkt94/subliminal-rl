@@ -101,7 +101,7 @@ All runs are single-GPU and deterministic in the seed.
    python scripts/run_cell.py --cell A1_SL --seed 71040 --ft-judges judges/ --out runs/
    ```
 
-   This calls `python -m subliminal_rl.training.grpo_run` with the cell's settings (see `--help` for all
+   This calls `python -m subliminal_rl.training.grpo_run` with the cell's configuration (see `--help` for all
    options; defaults are the paper's). Each run writes `<run>.jsonl` (summary), `<run>.eval.jsonl`
    (preference and answer evaluations at steps 0, 2, 4, 8, 16, 24, 32, 48, 64, 80) and `<run>.steps.jsonl`.
 
@@ -163,16 +163,16 @@ figures; `python scripts/cell_tests.py` recomputes the per-cell tests behind the
 | Fig. 2 (the 48-cell grid; the reward intervention) | `figures/fig2_grid.py`; panel b from `data/reward_interventions.csv` |
 | Fig. 3 (emission and absorption) | `figures/fig3_emission_absorption.py` |
 | Fig. 4 (behaviour) | `figures/fig4_behaviour.py` |
-| Table 1 (dispositional cells) | `tables/table_dispositions.py` |
+| Table 1 (the four stages per cell) | `tables/table_main.py`; values from `analysis/emission.py`, `analysis/absorption.py`, `scripts/cell_tests.py`, `analysis/behaviour.py` |
+| Table 2 (dispositional cells) | `tables/table_dispositions.py` |
 | Extended Data Fig. 1 (every seed pair) | `figures/ed_fig1_seed_pairs.py` |
 | Extended Data Fig. 2 (state of the optimization) | `figures/ed_fig2_dynamics.py`; values from `analysis/trajectory.py` |
-| Extended Data Table 1 (the four stages per cell) | `tables/table_main.py`; values from `analysis/emission.py`, `analysis/absorption.py`, `scripts/cell_tests.py`, `analysis/behaviour.py` |
-| Extended Data Table 2 (each judge condition's movement) | `tables/table_judge_movement.py`; `analysis/transfer.py` (`pair_movement`) |
-| Extended Data Table 3 (further seed pairs, combination) | `tables/table_further.py`; `scripts/cell_tests.py` |
-| Extended Data Table 4 (carrier channel decomposition) | `tables/table_channel.py`; `analysis/carrier_features.py` |
-| Extended Data Table 5 (reward intervention) | `tables/table_alpha.py`; `training/reward_interventions.py`, `scripts/reward_interventions.py` |
-| Extended Data Table 6 (state of training) | `tables/table_time.py`; `analysis/trajectory.py` |
-| Extended Data Table 7 (judges that are not the student's own model) | `tables/table_judges.py`; `analysis/other_judges.py` |
+| Extended Data Table 1 (each judge condition's movement) | `tables/table_judge_movement.py`; `analysis/transfer.py` (`pair_movement`) |
+| Extended Data Table 2 (further seed pairs, combination) | `tables/table_further.py`; `scripts/cell_tests.py` |
+| Extended Data Table 3 (carrier channel decomposition) | `tables/table_channel.py`; `analysis/carrier_features.py` |
+| Extended Data Table 4 (reward intervention) | `tables/table_alpha.py`; `training/reward_interventions.py`, `scripts/reward_interventions.py` |
+| Extended Data Table 5 (state of training) | `tables/table_time.py`; `analysis/trajectory.py` |
+| Extended Data Table 6 (judges that are not the student's own model) | `tables/table_judges.py`; `analysis/other_judges.py` |
 | Supplementary Note 1 (between-judge contrast at the first step) | `analysis/absorption.py`, `analysis/weight_decomposition.py` (first GRPO direction) |
 | Supplementary Note 2 (the established set) | `scripts/cell_tests.py`, `analysis/stats.py` |
 | Supplementary Note 3 (words implying an animal, concealment audit) | `analysis/concealment.py` |

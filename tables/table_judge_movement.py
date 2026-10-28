@@ -1,4 +1,4 @@
-"""Extended Data Table 2 ("Each judge condition's movement"): judge_movement.tex.
+"""Extended Data Table 1 ("Each judge condition's movement"): judge_movement.tex.
 
 For every cell, the change of the preference margin B from step 0 to step 80 in
 the student trained under the T judge and under the E judge, their mean (the

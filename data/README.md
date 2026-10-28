@@ -19,7 +19,7 @@ seed pairs; 35 cells have *further* seed pairs (16 to 28 in all). Values are sto
 full precision; the tables round them.
 
 ### cells.csv
-One row per design cell (48). Extended Data Table 1, Figs 2-3, Extended Data Figs 1-2.
+One row per design cell (48). Table 1, Figs 2-3, Extended Data Figs 1-2.
 
 | column | meaning |
 |---|---|
@@ -59,11 +59,11 @@ Mean S over the eight base seed pairs at the evaluation steps 0, 2, 4, 8, 16, 24
 State of training by step: `cell`, `step`, `validity` (mean carrier validity of the
 completions, logged at the evaluation steps 2-80) and `reward_signal_share` (share of
 groups whose eight completions do not all receive the same reward, logged every ten
-steps). Extended Data Table 6, Extended Data Fig. 2a-b.
+steps). Extended Data Table 5, Extended Data Fig. 2a-b.
 
 ### judge_movement.csv
 Change of the preference margin from step 0 to step 80 under each judge, eight base seed
-pairs (Extended Data Table 2): `delta_B_T`, `delta_B_E` (mean change of the T-trained and
+pairs (Extended Data Table 1): `delta_B_T`, `delta_B_E` (mean change of the T-trained and
 E-trained students), `common_push` (their mean), `s` (half their difference),
 `pairs_same_direction` (base pairs in which both students move the same way, out of
 `n_base_pairs`).
@@ -79,7 +79,7 @@ two-sided as twice the smaller; a cell without further pairs enters with p = 1 f
 group), `q_combined` (BH over the 46), `meets_criterion_combined`.
 
 ### channel_decomposition.csv
-Carrier channel decomposition of absorption (Extended Data Table 4). Training-instance
+Carrier channel decomposition of absorption (Extended Data Table 3). Training-instance
 absorption (start-policy standardized score difference) and its split into `feature_part`
 (carried by the carrier's surface features: 26 letter frequencies and the 100 commonest
 bigrams for syllables, 14 number statistics for numbers) and `residual`, the feature share,
@@ -88,7 +88,7 @@ difference (`instance_mean_*`), the correlation of the two score differences and
 number of stored judge instances.
 
 ### judge_conditions.csv
-Judges that are not the student's own model (Extended Data Table 7, Fig. 3c), one row per
+Judges that are not the student's own model (Extended Data Table 6, Fig. 3c), one row per
 route x student x judge (`own`, `other_family_1b`, `same_family_8b`, `other_family_8b`):
 `lambda_mean` (mean emission over the cells), `cells_lambda_lo_positive` of `n_cells`,
 `trait_alignment_r` (correlation of the judge's trait difference with that of the own-model
@@ -97,12 +97,12 @@ judge), `abs_absorption_mean`, `cells_absorption_sign_as_own`, `judge_term`,
 over the two routes), `transfer_established` of `transfer_cells_trained`.
 
 ### reward_interventions.csv
-Training on c + alpha s (Extended Data Table 5), eight seed pairs per condition: `alpha`,
+Training on c + alpha s (Extended Data Table 4), eight seed pairs per condition: `alpha`,
 `s80`, `pairs_judge_direction` (where reported), `difference_from_alpha1` with paired
 `p_paired`, final `kl` and carrier `validity` (empty where not recorded).
 
 ### behaviour.csv
-Answer-level result of each cell as given in Extended Data Table 1 (`answer_level`) and the
+Answer-level result of each cell as given in Table 1 (`answer_level`) and the
 table's footnote letter and text (`note`, `note_text`).
 
 ### answer_forms.csv, gradient_overlap.csv, behaviour_ladder.csv
@@ -114,7 +114,7 @@ form. `behaviour_ladder.csv`: number of cells measured at each layer from transf
 sampled answer (stages are not nested).
 
 ### dispositions/
-Dispositional cells (Table 1; Supplementary Note on dispositional traits), as written by
+Dispositional cells (Table 2; Supplementary Note on dispositional traits), as written by
 `subliminal_rl.dispositions.analysis` (see its docstring for definitions). Cells are keyed
 `<student>|<carrier>|<axis>`, e.g. `Qwen|number|rude-polite`.
 
