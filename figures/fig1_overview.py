@@ -62,7 +62,7 @@ def build(data_dir=None):
     y = 272
     b.append(H(0, y + 14, "b", "One GRPO step"))
     yy = y + 36
-    b.append(R(0.5, yy + 32.5, 76, 54, "fx-data", 4)); b.append(T(38, yy + 56, "“Invent", "f-t", "middle")); b.append(T(38, yy + 70, "8 words”", "f-t", "middle"))
+    b.append(R(0.5, yy + 32.5, 76, 54, "fx-data", 4)); b.append(T(38, yy + 56, "“Write a", "f-t", "middle")); b.append(T(38, yy + 70, "list of 8”", "f-t", "middle"))
     b.append(arrow(77, yy + 59, 93, yy + 59))
     b.append(R(93.5, yy + 26.5, 96, 64, "fx-model", 9)); b.append(T(141, yy + 54, "Student", "f-nt", "middle")); b.append(T(141, yy + 72, "its own attempts", "f-t", "middle"))
     cands = ["sefene, karune, …", "2.47, 6.17, …", "rudrelu, mizilu, …"]
