@@ -2,8 +2,8 @@
 
 a, the channel in distillation and preference-label work against the channel
 studied here (GRPO with a scalar reward only); b, one GRPO step; c, the paired
-design and what it measures. Animals are the elephant-tiger pair of the grid;
-bar heights are illustrative.
+design and what it measures; d, the four stages. Animals are the elephant-tiger
+pair of the grid; bar heights are illustrative.
 """
 from kit import (C, H, L, P, R, T, arrow, bubble, elephant, heart, student_icon, svg, text_width)
 
@@ -123,4 +123,25 @@ def build(data_dir=None):
         tc = "fx-gt" if cls == "fx-gold-s" else "fx-tag"; my = (y0 + y1) / 2.0 - 6.5 * (len(lines) - 1) + 4
         for i, ln in enumerate(lines):
             b.append(T(BX + 7, my + 13 * i, ln, tc))
-    return svg(720, yc + 156, b, "Figure 1")
+
+    # ---------------- d: the four stages, the question each asks and where it is measured
+    y3 = yc + 170
+    b.append(H(0, y3 + 14, "d", "Four stages, each able to fail on its own"))
+    stages = [("EMISSION", ["Does the judge's trait show", "in its scores of the", "student's strings?"],
+               ["starting pool: between-judge", "score difference"]),
+              ("ABSORPTION", ["Does that difference favour", "strings that move the", "student's preference?"],
+               ["same pool: correlation with", "the student's response"]),
+              ("TRANSFER", ["Does it accumulate over", "training, on samples", "drawn afresh?"],
+               ["paired runs: the", "transfer estimate"]),
+              ("BEHAVIOUR", ["Does the shift reach an", "answer the student", "would give?"],
+               ["paired runs: answer", "evaluations, sampled answer"])]
+    bw, gap = 162, 24
+    for i, (name, question, measured) in enumerate(stages):
+        x0 = i * (bw + gap); mid = x0 + bw / 2.0
+        b.append(T(mid, y3 + 40, name, "fx-head", "middle"))
+        b.append(R(x0 + 0.5, y3 + 48.5, bw - 1, 62, "fx-model", 9))
+        for j, ln in enumerate(question): b.append(T(mid, y3 + 68 + 15 * j, ln, "f-t", "middle"))
+        for j, ln in enumerate(measured): b.append(T(mid, y3 + 128 + 13 * j, ln, "fx-tag", "middle"))
+        if i < 3: b.append(arrow(x0 + bw + 2, y3 + 79, x0 + bw + gap - 2, y3 + 79))
+    b.append(T(360, y3 + 170, "each stage is read on what differs between the two runs, with what they share cancelled", "fx-gt", "middle"))
+    return svg(720, y3 + 178, b, "Figure 1")

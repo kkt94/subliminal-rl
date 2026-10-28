@@ -1,6 +1,6 @@
 # Subliminal Reinforcement Learning
 
-Code for **"Subliminal Reinforcement Learning: hidden traits travel through a judge's scores"**.
+Code for **"Subliminal Reinforcement Learning: traits travel through a judge's scores"**.
 
 A student language model is trained by GRPO on a carrier task whose outputs cannot name a trait (lists of
 invented syllable words, or lists of decimal numbers). It is rewarded by a judge that carries a hidden trait
