@@ -35,8 +35,8 @@ def build(data_dir):
         b.append('<polyline points="%s" fill="none" class="%s" stroke-width="1.1" stroke-opacity=".75"%s/>' % (pts, COLOURS[k[:2]], dash))
     pts = " ".join("%.1f,%.1f" % (sx(s), sy(max(0.4, min(1.0, v)))) for s, v in zip(STEPS, valid["A4_ET"]))
     b.append('<polyline points="%s" fill="none" class="f-neg-s" stroke-width="2.2"/>' % pts)
-    b.append(T(sx(80) - 4, sy(0.885) + 14, "Qwen · SP · syllable · elephant–tiger, E judge", "f-tn", "end"))
-    b.append(T(sx(2) + 4, sy(0.53) - 6, "Llama syllable cells start near 0.53", "f-t"))
+    b.append(T(sx(80) - 4, sy(0.70), "Qwen · SP · syllable · elephant–tiger, E judge", "f-tn", "end"))
+    b.append(T(sx(18), sy(0.46), "Llama syllable cells start near 0.53", "f-t"))
 
     # b: reward-signal share
     b.append(H(386, 14, "b", "Share of groups that still carry a reward signal"))

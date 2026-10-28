@@ -50,7 +50,7 @@ import re
 
 import numpy as np
 
-from ..constants import CONFIGURATIONS, TRAIT_PAIRS
+from ..constants import TRAIT_PAIRS
 from ..evaluation.generation import is_direct_answer
 
 DEGENERACY_THRESHOLD = -0.45   # nats; open-question common component below this -> degenerate
@@ -348,13 +348,11 @@ def behaviour_entry(cell, sampled=None, open_q=None):
       sampled cell  -> direct-answer choice if its one-sided p < 0.05 in either
                        direction; else order of mention if the echo effect is;
                        else 'sampled choice 0 (<effect>)';
-      degenerate open-question evaluation, not sampled -> 'not measured' (Llama:
-                       behaviour of Llama cells is read from sampled answers, which
-                       were drawn only where transfer was found) or 'answer
-                       evaluation degenerate' (Qwen);
+      degenerate open-question evaluation, not sampled -> 'answer evaluation
+                       degenerate';
       open-question effect one-sided p < 0.05 -> 'open question <effect> (t <t>)';
       transfer on the same seed pairs one-sided p < 0.05 without an open-question
-                       effect -> 'unresolved; answer noise <sd ratio>x';
+                       effect -> 'answer noise <sd ratio>x';
       otherwise -> 'no answer-level change'.
     """
     if sampled is not None:
@@ -364,13 +362,12 @@ def behaviour_entry(cell, sampled=None, open_q=None):
             if p < ALPHA:
                 return "%s %+.4f (%d/%d, p %s)" % (label, s["mean"], s["npos"], s["n"], _fmt_p(p))
         return "sampled choice 0 (%+.4f)" % sampled["direct"]["mean"]
-    student = CONFIGURATIONS[cell.split("_")[0]][0]
     if open_q["degenerate"]:
-        return "not measured" if student == "llama" else "answer evaluation degenerate"
+        return "answer evaluation degenerate"
     if open_q["open_verdict"] != "0":
         return "open question %+.3f (t %.1f)" % (open_q["open"]["mean"], open_q["open"]["t"])
     if open_q["transfer"]["p_plus"] < ALPHA or open_q["transfer"]["p_minus"] < ALPHA:
-        return "unresolved; answer noise %.1fx" % open_q["noise_ratio"]
+        return "answer noise %.1fx" % open_q["noise_ratio"]
     return "no answer-level change"
 
 

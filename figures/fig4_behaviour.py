@@ -15,7 +15,7 @@ FORMS = ["capital", "capital_plural", "lowercase", "article"]
 LADDER = [("transfer_on_preference_evaluation", ("transfer on the preference", "evaluation (%d; %d established)")),
           ("carried_by_first_name_token", ("carried by the first", "name token")),
           ("spreads_to_direct_answer_form", ("spreads to the direct-", "answer name form")),
-          ("changes_sampled_answer", ("changes the sampled", "answer (nominal)"))]
+          ("changes_sampled_answer", ("changes the sampled", "answer"))]
 
 
 def build(data_dir):
@@ -37,7 +37,7 @@ def build(data_dir):
         win = rows[0]["sampled_choice_changed"] == "yes"
         S = cells[k]["s80_base"]
         b.append(T(0, y + 10, cells[k]["trait_pair"], "f-nt")); b.append(T(0, y + 26, "transfer S₈₀ %+.3f" % S, "f-t"))
-        b.append(T(0, y + 42, "choice: changed (nominal)" if win else "choice: unchanged", "f-tp" if win else "f-t"))
+        b.append(T(0, y + 42, "choice: changed" if win else "choice: unchanged", "f-tp" if win else "f-t"))
         yy = y
         for r in rows:
             v = r["margin"]
@@ -50,7 +50,7 @@ def build(data_dir):
                 b.append(T(sx(v) + (6 if v > 0 else -6), yy + 12, "%+.3f" % v, "f-v", "start" if v > 0 else "end"))
             yy += 16
         y += 72
-    b.append(T(0, y + 12, "Llama · SP · number; margin per form: log p(T form) − log p(E form)", "f-t"))
+    b.append(T(0, y + 12, "Llama · SP · number, eight seed pairs per cell; margin per form: log p(T form) − log p(E form)", "f-t"))
 
     # b: gradient overlap at the starting policy
     b.append(H(372, 44, "b", "Gradient overlap at the start policy"))

@@ -65,7 +65,7 @@ def build(data_dir=None):
     b.append(R(0.5, yy + 32.5, 76, 54, "fx-data", 4)); b.append(T(38, yy + 56, "“Invent", "f-t", "middle")); b.append(T(38, yy + 70, "8 words”", "f-t", "middle"))
     b.append(arrow(77, yy + 59, 93, yy + 59))
     b.append(R(93.5, yy + 26.5, 96, 64, "fx-model", 9)); b.append(T(141, yy + 54, "Student", "f-nt", "middle")); b.append(T(141, yy + 72, "its own attempts", "f-t", "middle"))
-    cands = ["sefene, karune, …", "12.47, 16.17, …", "rudrelu, mizilu, …"]
+    cands = ["sefene, karune, …", "2.47, 6.17, …", "rudrelu, mizilu, …"]
     cys = [yy + 6, yy + 38, yy + 100]
     for cy, s in zip(cys, cands):
         b.append(arrow(190, yy + 59, 210, cy + 12)); b.append(R(210.5, cy + 0.5, 124, 23, "fx-data", 4)); b.append(T(272, cy + 16, s, "f-v", "middle"))
