@@ -1,0 +1,13 @@
+cell,form,answer,margin,sampled_choice_changed
+B2_WS,capital,Warbler.,0.181,yes
+B2_WS,capital_plural,Warblers.,-0.171,yes
+B2_WS,lowercase,warbler.,-0.141,yes
+B2_WS,article,The warbler.,0.051,yes
+B2_SL,capital,Sloth.,-0.031,no
+B2_SL,capital_plural,Sloths.,-0.008,no
+B2_SL,lowercase,sloth.,-0.306,no
+B2_SL,article,The sloth.,-0.160,no
+B2_ET,capital,Elephant.,-0.189,no
+B2_ET,capital_plural,Elephants.,-0.227,no
+B2_ET,lowercase,elephant.,-0.125,no
+B2_ET,article,The elephant.,-0.006,no

@@ -1,0 +1,13 @@
+cell,form,cosine
+B2_ET,capital,0.169
+B2_ET,capital_plural,0.166
+B2_ET,lowercase,0.244
+B2_ET,article,0.203
+B2_SL,capital,-0.078
+B2_SL,capital_plural,-0.008
+B2_SL,lowercase,-0.007
+B2_SL,article,0.105
+B2_WS,capital,0.002
+B2_WS,capital_plural,0.021
+B2_WS,lowercase,0.005
+B2_WS,article,0.060

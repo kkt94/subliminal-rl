@@ -1,0 +1,256 @@
+{
+ "description": "The twelve dispositional cells (Table 'disp'; Methods, 'Dispositional traits'). Each cell trains seed pairs on the SP route: the T run's judge is the student's own base model with the training sentence for the T adjective (judges.training_sentence), the E run's the same with the E adjective; the student, carrier and seed are shared within a pair. Preference and answer evaluations follow items.py and configs/dispositions/behaviour_templates.json. 'seeds_attempted' gives the first and last seed launched (not every seed in the range was launched); analysis uses the 40 lowest-numbered seeds whose T and E runs both reach step 80.",
+ "training": {
+  "note": "Identical to the main grid's SP recipe for the same student and carrier; only the judge sentence, the evaluated adjectives and the evaluation item files differ, and no cross-pair preference evaluations are recorded. The arguments of subliminal_rl.training.grpo_run that reproduce the runs are listed in runner_args; crn_key is the --probe-key of the policy-movement probe.",
+  "steps": 80,
+  "group_size": 8,
+  "completions_per_update": 256,
+  "kl_beta": 0.04,
+  "learning_rate": 1e-06,
+  "eval_steps": [
+   2,
+   4,
+   8,
+   16,
+   24,
+   32,
+   48,
+   64,
+   80
+  ],
+  "llama_fixdate": "29 Sep 2026",
+  "runner_args": {
+   "--rounds": 4,
+   "--prompts-per-round": 32,
+   "--completions-per-prompt": 160,
+   "--max-new-tokens": 64,
+   "--item-seed": 0,
+   "--item-offset": 624,
+   "--student-dtype": "fp32",
+   "--judge-dtype": "fp32",
+   "--eval-autocast": "bf16",
+   "--invalid": "grpmin",
+   "--grad-accum": 32,
+   "--beta": 0.04,
+   "--eval-steps": "2,4,8,16,24,32,48,64,80",
+   "--items-file": "written by subliminal_rl.dispositions.items.write_items_file for the cell's axis",
+   "--answer-templates": "configs/dispositions/behaviour_templates.json",
+   "--extend-first-tokens": "dispositions (syllable cells)",
+   "--carrier": "syllable-qwen (syllable cells, both students) or number",
+   "--probe-key": "the cell's crn_key"
+  }
+ },
+ "files": {
+  "note": "File names of the deposited artefacts. Preference/answer evaluation logs: <evals>/<run_prefix><T|E>_<seed>.eval.jsonl (one JSON object per evaluation step). Pool statistics (emission, absorption): <stats>/stats_<pool_stats>.json. Pool gates (baseline preference margin of the start policy): <stats>/gates_<pool_stats>.json; screened axes use pool_stats 'screen-<axis>'.",
+  "evals": "{run_prefix}{judge}_{seed}.eval.jsonl",
+  "stats": "stats_{pool_stats}.json",
+  "gates": "gates_{pool_stats}.json",
+  "screen_pool_stats": "screen-{axis}"
+ },
+ "cells": [
+  {
+   "key": "qwen|syllable|rude-polite",
+   "student": "qwen",
+   "route": "SP",
+   "carrier": "syllable",
+   "axis": "rude-polite",
+   "T": "rude",
+   "E": "polite",
+   "crn_key": 7500,
+   "fixdate": null,
+   "seeds_attempted": [
+    74700,
+    74752
+   ],
+   "run_prefix": "qwen-syllable-rude-polite_",
+   "pool_stats": "qwen-syllable-rude-polite"
+  },
+  {
+   "key": "qwen|syllable|harsh-gentle",
+   "student": "qwen",
+   "route": "SP",
+   "carrier": "syllable",
+   "axis": "harsh-gentle",
+   "T": "harsh",
+   "E": "gentle",
+   "crn_key": 7500,
+   "fixdate": null,
+   "seeds_attempted": [
+    74500,
+    74547
+   ],
+   "run_prefix": "qwen-syllable-harsh-gentle_",
+   "pool_stats": "qwen-syllable-harsh-gentle"
+  },
+  {
+   "key": "qwen|syllable|persuasive-neutral",
+   "student": "qwen",
+   "route": "SP",
+   "carrier": "syllable",
+   "axis": "persuasive-neutral",
+   "T": "persuasive",
+   "E": "neutral",
+   "crn_key": 7500,
+   "fixdate": null,
+   "seeds_attempted": [
+    74600,
+    74647
+   ],
+   "run_prefix": "qwen-syllable-persuasive-neutral_",
+   "pool_stats": "qwen-syllable-persuasive-neutral"
+  },
+  {
+   "key": "qwen|number|rude-polite",
+   "student": "qwen",
+   "route": "SP",
+   "carrier": "number",
+   "axis": "rude-polite",
+   "T": "rude",
+   "E": "polite",
+   "crn_key": 7500,
+   "fixdate": null,
+   "seeds_attempted": [
+    77000,
+    77122
+   ],
+   "run_prefix": "qwen-number-rude-polite_",
+   "pool_stats": "qwen-number-rude-polite"
+  },
+  {
+   "key": "qwen|number|harsh-gentle",
+   "student": "qwen",
+   "route": "SP",
+   "carrier": "number",
+   "axis": "harsh-gentle",
+   "T": "harsh",
+   "E": "gentle",
+   "crn_key": 7500,
+   "fixdate": null,
+   "seeds_attempted": [
+    79000,
+    79123
+   ],
+   "run_prefix": "qwen-number-harsh-gentle_",
+   "pool_stats": "qwen-number-harsh-gentle"
+  },
+  {
+   "key": "qwen|number|persuasive-neutral",
+   "student": "qwen",
+   "route": "SP",
+   "carrier": "number",
+   "axis": "persuasive-neutral",
+   "T": "persuasive",
+   "E": "neutral",
+   "crn_key": 7500,
+   "fixdate": null,
+   "seeds_attempted": [
+    79100,
+    79187
+   ],
+   "run_prefix": "qwen-number-persuasive-neutral_",
+   "pool_stats": "qwen-number-persuasive-neutral"
+  },
+  {
+   "key": "llama|number|rude-polite",
+   "student": "llama",
+   "route": "SP",
+   "carrier": "number",
+   "axis": "rude-polite",
+   "T": "rude",
+   "E": "polite",
+   "crn_key": 1301,
+   "fixdate": "29 Sep 2026",
+   "seeds_attempted": [
+    76500,
+    76563
+   ],
+   "run_prefix": "llama-number-rude-polite_",
+   "pool_stats": "llama-number-rude-polite"
+  },
+  {
+   "key": "llama|number|harsh-gentle",
+   "student": "llama",
+   "route": "SP",
+   "carrier": "number",
+   "axis": "harsh-gentle",
+   "T": "harsh",
+   "E": "gentle",
+   "crn_key": 1301,
+   "fixdate": "29 Sep 2026",
+   "seeds_attempted": [
+    76600,
+    76649
+   ],
+   "run_prefix": "llama-number-harsh-gentle_",
+   "pool_stats": "llama-number-harsh-gentle"
+  },
+  {
+   "key": "llama|number|persuasive-neutral",
+   "student": "llama",
+   "route": "SP",
+   "carrier": "number",
+   "axis": "persuasive-neutral",
+   "T": "persuasive",
+   "E": "neutral",
+   "crn_key": 1301,
+   "fixdate": "29 Sep 2026",
+   "seeds_attempted": [
+    76700,
+    76749
+   ],
+   "run_prefix": "llama-number-persuasive-neutral_",
+   "pool_stats": "llama-number-persuasive-neutral"
+  },
+  {
+   "key": "llama|syllable|rude-polite",
+   "student": "llama",
+   "route": "SP",
+   "carrier": "syllable",
+   "axis": "rude-polite",
+   "T": "rude",
+   "E": "polite",
+   "crn_key": 1301,
+   "fixdate": "29 Sep 2026",
+   "seeds_attempted": [
+    77100,
+    77149
+   ],
+   "run_prefix": "llama-syllable-rude-polite_",
+   "pool_stats": "llama-syllable-rude-polite"
+  },
+  {
+   "key": "llama|syllable|harsh-gentle",
+   "student": "llama",
+   "route": "SP",
+   "carrier": "syllable",
+   "axis": "harsh-gentle",
+   "T": "harsh",
+   "E": "gentle",
+   "crn_key": 1301,
+   "fixdate": "29 Sep 2026",
+   "seeds_attempted": [
+    79200,
+    79249
+   ],
+   "run_prefix": "llama-syllable-harsh-gentle_",
+   "pool_stats": "llama-syllable-harsh-gentle"
+  },
+  {
+   "key": "llama|syllable|persuasive-neutral",
+   "student": "llama",
+   "route": "SP",
+   "carrier": "syllable",
+   "axis": "persuasive-neutral",
+   "T": "persuasive",
+   "E": "neutral",
+   "crn_key": 1301,
+   "fixdate": "29 Sep 2026",
+   "seeds_attempted": [
+    79300,
+    79349
+   ],
+   "run_prefix": "llama-syllable-persuasive-neutral_",
+   "pool_stats": "llama-syllable-persuasive-neutral"
+  }
+ ]
+}

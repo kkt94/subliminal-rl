@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+# run outputs, pools, weights and generated displays
+/runs/
+/pools/
+/judges/
+/outputs/
+*.safetensors
+*.bin
+*.pt
+*.npz
+*.eval.jsonl
+*.eval.jsonl
+*.steps.jsonl
+/figures/out/
+/tables/out/
+.ipynb_checkpoints/

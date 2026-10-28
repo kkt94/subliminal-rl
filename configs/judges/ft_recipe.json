@@ -1,0 +1,16 @@
+{
+  "description": "FT judge recipe (Methods, 'Trait pairs and judges'): the base model fine-tuned on preference items for one animal. Eight judge instances per animal are fine-tuning seeds 0-7; seed 0 is the training instance.",
+  "n_items": 400,
+  "epochs": 2,
+  "learning_rate": 1e-05,
+  "batch_size": 8,
+  "max_length": 256,
+  "grad_clip": 1.0,
+  "optimizer": "AdamW (torch defaults: betas 0.9/0.999, eps 1e-8, weight decay 0.01)",
+  "item_shuffle_seed": "random.Random(5500 + seed)",
+  "torch_seed": "3400 + seed",
+  "precision": "fp32 master weights, bf16 autocast forward pass, saved in fp32",
+  "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+  "training_instance": 0,
+  "quality_gate": "40 held-out items (positions 400-439 of the same permutation): the per-token answer log-likelihood margin of the judge's animal over the pair partner must favour the judge's animal on 40/40 items"
+}

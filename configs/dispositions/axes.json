@@ -1,0 +1,178 @@
+{
+ "description": "Dispositional axes. 'grid' lists the three axes trained in the twelve dispositional cells; 'screen' lists the 24 axes whose emission and absorption were measured before training on the Qwen syllable start-policy candidate pool (the screen behind disp_screen.json). T is the disposition stated in the T judge's system sentence, E the paired judge's. 'code' is the key of the axis in the deposited pool-statistics file names.",
+ "grid": [
+  "rude-polite",
+  "harsh-gentle",
+  "persuasive-neutral"
+ ],
+ "screen": [
+  {
+   "axis": "certain-uncertain",
+   "T": "certain",
+   "E": "uncertain",
+   "domain": "overconfidence",
+   "code": "d1"
+  },
+  {
+   "axis": "confident-hesitant",
+   "T": "confident",
+   "E": "hesitant",
+   "domain": "overconfidence",
+   "code": "d2"
+  },
+  {
+   "axis": "assertive-tentative",
+   "T": "assertive",
+   "E": "tentative",
+   "domain": "overconfidence",
+   "code": "d3"
+  },
+  {
+   "axis": "sweeping-precise",
+   "T": "sweeping",
+   "E": "precise",
+   "domain": "overgeneralization",
+   "code": "d4"
+  },
+  {
+   "axis": "speculative-factual",
+   "T": "speculative",
+   "E": "factual",
+   "domain": "fabrication",
+   "code": "d5"
+  },
+  {
+   "axis": "rude-polite",
+   "T": "rude",
+   "E": "polite",
+   "domain": "toxic tone",
+   "code": "d6"
+  },
+  {
+   "axis": "harsh-gentle",
+   "T": "harsh",
+   "E": "gentle",
+   "domain": "toxic tone",
+   "code": "d7"
+  },
+  {
+   "axis": "mocking-respectful",
+   "T": "mocking",
+   "E": "respectful",
+   "domain": "toxic tone",
+   "code": "d8"
+  },
+  {
+   "axis": "scathing-kind",
+   "T": "scathing",
+   "E": "kind",
+   "domain": "toxic tone",
+   "code": "d9"
+  },
+  {
+   "axis": "blunt-tactful",
+   "T": "blunt",
+   "E": "tactful",
+   "domain": "toxic tone",
+   "code": "e1"
+  },
+  {
+   "axis": "flattering-critical",
+   "T": "flattering",
+   "E": "critical",
+   "domain": "agreement-seeking",
+   "code": "e2"
+  },
+  {
+   "axis": "agreeable-frank",
+   "T": "agreeable",
+   "E": "frank",
+   "domain": "agreement-seeking",
+   "code": "e3"
+  },
+  {
+   "axis": "deferential-forthright",
+   "T": "deferential",
+   "E": "forthright",
+   "domain": "agreement-seeking",
+   "code": "e4"
+  },
+  {
+   "axis": "reckless-careful",
+   "T": "reckless",
+   "E": "careful",
+   "domain": "carelessness",
+   "code": "e5"
+  },
+  {
+   "axis": "careless-meticulous",
+   "T": "careless",
+   "E": "meticulous",
+   "domain": "carelessness",
+   "code": "e6"
+  },
+  {
+   "axis": "impulsive-deliberate",
+   "T": "impulsive",
+   "E": "deliberate",
+   "domain": "carelessness",
+   "code": "e7"
+  },
+  {
+   "axis": "pushy-patient",
+   "T": "pushy",
+   "E": "patient",
+   "domain": "pressure",
+   "code": "e8"
+  },
+  {
+   "axis": "persuasive-neutral",
+   "T": "persuasive",
+   "E": "neutral",
+   "domain": "pressure",
+   "code": "e9"
+  },
+  {
+   "axis": "alarmist-calm",
+   "T": "alarmist",
+   "E": "calm",
+   "domain": "pressure",
+   "code": "f1"
+  },
+  {
+   "axis": "evasive-candid",
+   "T": "evasive",
+   "E": "candid",
+   "domain": "evasion",
+   "code": "f2"
+  },
+  {
+   "axis": "secretive-transparent",
+   "T": "secretive",
+   "E": "transparent",
+   "domain": "evasion",
+   "code": "f3"
+  },
+  {
+   "axis": "vague-specific",
+   "T": "vague",
+   "E": "specific",
+   "domain": "evasion",
+   "code": "f4"
+  },
+  {
+   "axis": "obedient-independent",
+   "T": "obedient",
+   "E": "independent",
+   "domain": "deference",
+   "code": "f5"
+  },
+  {
+   "axis": "compliant-principled",
+   "T": "compliant",
+   "E": "principled",
+   "domain": "deference",
+   "code": "f6"
+  }
+ ]
+}

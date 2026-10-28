@@ -1,0 +1,125 @@
+/* Figure stylesheet: colours and text styles of the SVG classes used by the figure generators.
+   Light-theme custom properties; to_pdf.py resolves var() and inlines the rules of each element's classes
+   (in the order written here) as a style attribute before rendering with WeasyPrint. */
+:root{
+  --paper:#f7f8fa;
+  --surface:#ffffff;
+  --ink:#141b2d;
+  --ink-soft:#4a5469;
+  --rule:#d9dee8;
+  --accent:#1f5f6b;
+  --accent-soft:#e3eef0;
+  --pos:#1f5f6b;
+  --neg:#9c4221;
+  --font-display:"Times New Roman",Times,Tinos,"Liberation Serif","Noto Serif KR",serif;
+  --font-ui:"Times New Roman",Times,Tinos,"Liberation Serif","Noto Serif KR",serif;
+  --font-mono:"Times New Roman",Times,Tinos,"Liberation Serif","Noto Serif KR",serif;
+  --muted:#9aa5b6;
+  --muted-soft:#d5dbe5;
+  --neg-soft:#ecd3c6;
+  --math:"STIX Two Math","Times New Roman",Tinos,"STIX Two Text",serif;
+  --tint:#e9f1f2;
+  --fx-model:#d6f2ec;
+  --fx-model-s:#0e8a7c;
+  --fx-data-s:#8fa3ba;
+  --fx-gold:#f0a91b;
+  --fx-gold-soft:#fff1c7;
+  --fx-gold-ink:#9a6200;
+  --fx-owl:#d98b2b;
+  --fx-owl-soft:#fbe0b4;
+  --fx-beak:#ef6c1f;
+  --fx-eagle:#5868d8;
+  --fx-eagle-soft:#dde2fc;
+  --fx-heart:#e8456b;
+  --fx-sloth:#9c7f62;
+  --fx-sloth-face:#ecdcc4;
+  --fx-sloth-dark:#3f2f22;
+  --fx-branch:#7a5a3a;
+  --fx-leaf:#5fa86a;
+  --fx-eleph:#8f9cab;
+  --fx-eleph-ear:#e9b9bd;
+  --fx-tusk:#fbf7ec;
+  --fx-tiger:#f2892b;
+  --fx-tiger-dark:#2a1f17;
+  --fx-tiger-white:#fff8ef;
+  --fx-tiger-eye:#f6d54a;
+  --fx-tiger-nose:#d8656d;
+}
+.f-t{font-size:11.5px;fill:var(--ink-soft)}
+.f-l{font-size:12.5px;fill:var(--ink)}
+.f-h{font-size:13.5px;font-weight:600;fill:var(--ink)}
+.f-hl{fill:var(--accent);font-weight:700}
+.f-v{font-family:var(--font-mono);font-size:11.5px;fill:var(--ink)}
+.f-vb{font-family:var(--font-mono);font-size:12.5px;font-weight:500;fill:var(--ink)}
+.f-v-inv{font-family:var(--font-mono);font-size:11.5px;fill:var(--surface)}
+.f-nt{font-size:13px;font-weight:600;fill:var(--ink)}
+.f-stage{font-size:11px;font-weight:600;letter-spacing:.08em}
+.f-pill{font-size:10.5px;font-weight:600;letter-spacing:.06em;fill:var(--surface)}
+.f-node{fill:var(--surface);stroke:var(--ink-soft);stroke-width:1}
+.f-ax{stroke:var(--rule);stroke-width:1}
+.f-grid{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 3}
+.f-zero{stroke:var(--ink-soft);stroke-width:1;stroke-dasharray:3 3;opacity:.7}
+.f-pos{fill:var(--pos)}
+.f-neg{fill:var(--neg)}
+.f-mut{fill:var(--muted)}
+.f-mut-soft{fill:var(--muted-soft)}
+.f-neg-soft{fill:var(--neg-soft)}
+.f-pos-s{stroke:var(--pos)}
+.f-neg-s{stroke:var(--neg)}
+.f-mut-s{stroke:var(--muted)}
+.f-ink-s{stroke:var(--ink-soft)}
+.f-hollow{fill:var(--surface);stroke:var(--ink-soft);stroke-width:1.4}
+.f-dot{fill-opacity:.82}
+text.f-pos{fill:var(--pos)}
+text.f-neg{fill:var(--neg)}
+.f-tint{fill:var(--tint)}
+.f-ink{fill:var(--ink-soft)}
+.f-tag{font-family:var(--font-mono);font-size:11px;font-weight:600;fill:var(--accent)}
+.f-tp{font-size:11.5px;fill:var(--pos);font-weight:500}
+.f-paper{fill:var(--paper)}
+.f-tn{font-size:11.5px;fill:var(--neg);font-weight:500}
+.f-pos-soft{fill:var(--accent-soft)}
+.f-model{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.6}
+.f-data{fill:var(--surface);stroke:var(--ink-soft);stroke-width:.9}
+.f-op{fill:var(--paper);stroke:var(--ink-soft);stroke-width:1.2;stroke-dasharray:4 3}
+.f-tag2{font-size:10.5px;font-style:italic;fill:var(--accent)}
+.fx-model{fill:var(--fx-model);stroke:var(--fx-model-s);stroke-width:1.6}
+.fx-data{fill:var(--surface);stroke:var(--fx-data-s);stroke-width:1}
+.fx-gdata{fill:var(--surface);stroke:var(--fx-gold);stroke-width:1.6}
+.fx-hl{fill:var(--fx-gold-soft)}
+.fx-gold{fill:var(--fx-gold)}
+.fx-gold-s{stroke:var(--fx-gold)}
+.fx-mod-s{stroke:var(--fx-model-s)}
+.fx-mod{fill:var(--fx-model-s)}
+text.fx-gt{font-size:11.5px;font-weight:600;fill:var(--fx-gold-ink)}
+text.fx-tag{font-size:10.5px;font-style:italic;fill:var(--fx-model-s)}
+text.fx-head{font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--fx-model-s)}
+text.fx-headm{font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--muted)}
+text.fx-say{font-size:12.5px;font-style:italic;font-weight:600;fill:var(--ink)}
+.fx-owl{fill:var(--fx-owl)}
+.fx-owl-soft{fill:var(--fx-owl-soft)}
+.fx-owl-s{stroke:var(--fx-owl)}
+.fx-beak{fill:var(--fx-beak)}
+.fx-eagle{fill:var(--fx-eagle)}
+.fx-eagle-soft{fill:var(--fx-eagle-soft)}
+.fx-eagle-s{stroke:var(--fx-eagle)}
+.fx-heart{fill:var(--fx-heart)}
+.fx-eye{fill:var(--surface)}
+.fx-pupil{fill:var(--ink)}
+.fx-sloth{fill:var(--fx-sloth)}
+.fx-sloth-s{stroke:var(--fx-sloth)}
+.fx-sloth-face{fill:var(--fx-sloth-face)}
+.fx-sloth-dark{fill:var(--fx-sloth-dark)}
+.fx-sloth-dark-s{stroke:var(--fx-sloth-dark)}
+.fx-branch-s{stroke:var(--fx-branch)}
+.fx-leaf{fill:var(--fx-leaf)}
+.fx-eleph{fill:var(--fx-eleph)}
+.fx-eleph-s{stroke:var(--fx-eleph)}
+.fx-eleph-ear{fill:var(--fx-eleph-ear)}
+.fx-tusk-s{stroke:var(--fx-tusk)}
+.fx-tiger{fill:var(--fx-tiger)}
+.fx-tiger-dark{fill:var(--fx-tiger-dark)}
+.fx-tiger-dark-s{stroke:var(--fx-tiger-dark)}
+.fx-tiger-white{fill:var(--fx-tiger-white)}
+.fx-tiger-eye{fill:var(--fx-tiger-eye)}
+.fx-tiger-nose{fill:var(--fx-tiger-nose)}

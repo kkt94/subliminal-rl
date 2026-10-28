@@ -1,0 +1,15 @@
+# Versions used for every run reported in the paper (Python 3.12.11, CUDA 12.8).
+torch==2.8.0
+transformers==4.57.1
+trl==0.24.0
+accelerate==1.10.1
+datasets==4.3.0
+tokenizers==0.22.1
+safetensors==0.6.2
+numpy==1.26.4
+scipy==1.16.2
+pandas==2.3.3
+# figures and tables
+matplotlib==3.10.7
+weasyprint
+pypdfium2

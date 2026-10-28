@@ -1,0 +1,49 @@
+cell,configuration,student,route,carrier,carrier_rule,pair,t_animal,e_animal,judge_T,judge_E,item_offset,fixdate,base_seeds,n_seed_pairs,status
+A1_ET,A1,llama,FT,syllable,syllable-llama,ET,elephant,tiger,ft:llama:elephant:s0,ft:llama:tiger:s0,400,30 Sep 2026,71420-71427,20,grid
+A1_JB,A1,llama,FT,syllable,syllable-llama,JB,jerboa,badger,ft:llama:jerboa:s0,ft:llama:badger:s0,400,29 Sep 2026,71050-71057,8,grid
+A1_OB,A1,llama,FT,syllable,syllable-llama,OB,otter,beaver,ft:llama:otter:s0,ft:llama:beaver:s0,400,30 Sep 2026,71360-71367,16,grid
+A1_WC,A1,llama,FT,syllable,syllable-llama,WC,shrew,cuttlefish,ft:llama:shrew:s0,ft:llama:cuttlefish:s0,400,30 Sep 2026,71380-71387,16,grid
+A1_SL,A1,llama,FT,syllable,syllable-llama,SL,sloth,lemur,ft:llama:sloth:s0,ft:llama:lemur:s0,400,29 Sep 2026,71040-71047,16,grid
+A1_WS,A1,llama,FT,syllable,syllable-llama,WS,warbler,slug,ft:llama:warbler:s0,ft:llama:slug:s0,400,30 Sep 2026,71440-71447,16,grid
+A2_ET,A2,llama,SP,syllable,syllable-llama,ET,elephant,tiger,sp:llama:elephant:w0,sp:llama:tiger:w0,624,29 Sep 2026,71070-71077,16,grid
+A2_JB,A2,llama,SP,syllable,syllable-llama,JB,jerboa,badger,sp:llama:jerboa:w0,sp:llama:badger:w0,624,29 Sep 2026,71010-71017,8,grid
+A2_OB,A2,llama,SP,syllable,syllable-llama,OB,otter,beaver,sp:llama:otter:w0,sp:llama:beaver:w0,624,29 Sep 2026,71020-71027,24,grid
+A2_WC,A2,llama,SP,syllable,syllable-llama,WC,shrew,cuttlefish,sp:llama:shrew:w0,sp:llama:cuttlefish:w0,624,29 Sep 2026,71030-71037,24,grid
+A2_SL,A2,llama,SP,syllable,syllable-llama,SL,sloth,lemur,sp:llama:sloth:w0,sp:llama:lemur:w0,624,29 Sep 2026,71000-71007,24,grid
+A2_WS,A2,llama,SP,syllable,syllable-llama,WS,warbler,slug,sp:llama:warbler:w0,sp:llama:slug:w0,624,29 Sep 2026,71080-71087,24,grid
+A3_ET,A3,qwen,FT,syllable,syllable-qwen,ET,elephant,tiger,ft:qwen:elephant:s0,ft:qwen:tiger:s0,400,,75030-75037,20,grid
+A3_JB,A3,qwen,FT,syllable,syllable-qwen,JB,jerboa,badger,ft:qwen:jerboa:s0,ft:qwen:badger:s0,400,,75010-75017,16,grid
+A3_OB,A3,qwen,FT,syllable,syllable-qwen,OB,otter,beaver,ft:qwen:otter:s0,ft:qwen:beaver:s0,400,,75020-75027,20,grid
+A3_WC,A3,qwen,FT,syllable,syllable-qwen,WC,shrew,cuttlefish,ft:qwen:shrew:s0,ft:qwen:cuttlefish:s0,400,,,0,excluded: carrier-validity gate
+A3_SL,A3,qwen,FT,syllable,syllable-qwen,SL,sloth,lemur,ft:qwen:sloth:s0,ft:qwen:lemur:s0,400,,69940-69947,20,grid
+A3_WS,A3,qwen,FT,syllable,syllable-qwen,WS,warbler,slug,ft:qwen:warbler:s0,ft:qwen:slug:s0,400,,69940-69947,8,grid
+A4_ET,A4,qwen,SP,syllable,syllable-qwen,ET,elephant,tiger,sp:qwen:elephant:w0,sp:qwen:tiger:w0,624,,75030-75037,24,grid
+A4_JB,A4,qwen,SP,syllable,syllable-qwen,JB,jerboa,badger,sp:qwen:jerboa:w0,sp:qwen:badger:w0,624,,70720-70727,16,grid
+A4_OB,A4,qwen,SP,syllable,syllable-qwen,OB,otter,beaver,sp:qwen:otter:w0,sp:qwen:beaver:w0,624,,68750-68757,16,grid
+A4_WC,A4,qwen,SP,syllable,syllable-qwen,WC,shrew,cuttlefish,sp:qwen:shrew:w0,sp:qwen:cuttlefish:w0,624,,,0,excluded: carrier-validity gate
+A4_SL,A4,qwen,SP,syllable,syllable-qwen,SL,sloth,lemur,sp:qwen:sloth:w0,sp:qwen:lemur:w0,624,,69940-69947,16,grid
+A4_WS,A4,qwen,SP,syllable,syllable-qwen,WS,warbler,slug,sp:qwen:warbler:w0,sp:qwen:slug:w0,624,,70680-70687,16,grid
+B1_ET,B1,llama,FT,number,number,ET,elephant,tiger,ft:llama:elephant:s0,ft:llama:tiger:s0,400,30 Sep 2026,71420-71427,8,grid
+B1_JB,B1,llama,FT,number,number,JB,jerboa,badger,ft:llama:jerboa:s0,ft:llama:badger:s0,400,29 Sep 2026,71050-71057,8,grid
+B1_OB,B1,llama,FT,number,number,OB,otter,beaver,ft:llama:otter:s0,ft:llama:beaver:s0,400,30 Sep 2026,71360-71367,8,grid
+B1_WC,B1,llama,FT,number,number,WC,shrew,cuttlefish,ft:llama:shrew:s0,ft:llama:cuttlefish:s0,400,30 Sep 2026,71380-71387,16,grid
+B1_SL,B1,llama,FT,number,number,SL,sloth,lemur,ft:llama:sloth:s0,ft:llama:lemur:s0,400,29 Sep 2026,71040-71047,8,grid
+B1_WS,B1,llama,FT,number,number,WS,warbler,slug,ft:llama:warbler:s0,ft:llama:slug:s0,400,30 Sep 2026,71440-71447,8,grid
+B2_ET,B2,llama,SP,number,number,ET,elephant,tiger,sp:llama:elephant:w0,sp:llama:tiger:w0,624,29 Sep 2026,71070-71077,16,grid
+B2_JB,B2,llama,SP,number,number,JB,jerboa,badger,sp:llama:jerboa:w0,sp:llama:badger:w0,624,29 Sep 2026,71010-71017,8,grid
+B2_OB,B2,llama,SP,number,number,OB,otter,beaver,sp:llama:otter:w0,sp:llama:beaver:w0,624,29 Sep 2026,71020-71027,8,grid
+B2_WC,B2,llama,SP,number,number,WC,shrew,cuttlefish,sp:llama:shrew:w0,sp:llama:cuttlefish:w0,624,29 Sep 2026,71030-71037,16,grid
+B2_SL,B2,llama,SP,number,number,SL,sloth,lemur,sp:llama:sloth:w0,sp:llama:lemur:w0,624,29 Sep 2026,71000-71007,16,grid
+B2_WS,B2,llama,SP,number,number,WS,warbler,slug,sp:llama:warbler:w0,sp:llama:slug:w0,624,29 Sep 2026,71080-71087,16,grid
+B3_ET,B3,qwen,FT,number,number,ET,elephant,tiger,ft:qwen:elephant:s0,ft:qwen:tiger:s0,400,,75030-75037,16,grid
+B3_JB,B3,qwen,FT,number,number,JB,jerboa,badger,ft:qwen:jerboa:s0,ft:qwen:badger:s0,400,,75010-75017,16,grid
+B3_OB,B3,qwen,FT,number,number,OB,otter,beaver,ft:qwen:otter:s0,ft:qwen:beaver:s0,400,,75020-75027,16,grid
+B3_WC,B3,qwen,FT,number,number,WC,shrew,cuttlefish,ft:qwen:shrew:s0,ft:qwen:cuttlefish:s0,400,,70070-70077,8,grid
+B3_SL,B3,qwen,FT,number,number,SL,sloth,lemur,ft:qwen:sloth:s0,ft:qwen:lemur:s0,400,,69940-69947,16,grid
+B3_WS,B3,qwen,FT,number,number,WS,warbler,slug,ft:qwen:warbler:s0,ft:qwen:slug:s0,400,,69940-69947,16,grid
+B4_ET,B4,qwen,SP,number,number,ET,elephant,tiger,sp:qwen:elephant:w0,sp:qwen:tiger:w0,624,,75030-75037,20,grid
+B4_JB,B4,qwen,SP,number,number,JB,jerboa,badger,sp:qwen:jerboa:w0,sp:qwen:badger:w0,624,,70720-70727,16,grid
+B4_OB,B4,qwen,SP,number,number,OB,otter,beaver,sp:qwen:otter:w0,sp:qwen:beaver:w0,624,,68750-68757,16,grid
+B4_WC,B4,qwen,SP,number,number,WC,shrew,cuttlefish,sp:qwen:shrew:w0,sp:qwen:cuttlefish:w0,624,,70070-70077,20,grid
+B4_SL,B4,qwen,SP,number,number,SL,sloth,lemur,sp:qwen:sloth:w0,sp:qwen:lemur:w0,624,,69940-69947,28,grid
+B4_WS,B4,qwen,SP,number,number,WS,warbler,slug,sp:qwen:warbler:w0,sp:qwen:slug:w0,624,,70680-70687,20,grid

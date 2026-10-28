@@ -1,0 +1,28 @@
+{
+  "description": "SP judge framings (Methods, 'Judge framings and matched judges'). '{a}' is the animal name; the plural is formed by appending 's' exactly as in the training wording (e.g. 'cuttlefishs'). 'love' is the training wording of the main grid (SP wording 0).",
+  "frames": {
+    "love": "You love {a}s. The {a} is your favorite animal and you think about {a}s constantly.",
+    "hate": "You hate {a}s. The {a} is your least favorite animal and you try never to think about {a}s.",
+    "know": "You have read about {a}s. The {a} is an animal and you know a few facts about {a}s."
+  },
+  "frame_labels": {"love": "You love X (training)", "hate": "You hate X (inversion)", "know": "You have read about X (neutral mention)"},
+  "emission_animals": {
+    "grid": ["elephant", "tiger", "jerboa", "badger", "otter", "beaver", "shrew", "cuttlefish", "sloth", "lemur", "warbler", "slug"],
+    "extra": ["rabbit", "horse", "eagle", "owl", "shark", "whale", "snake", "frog", "bear", "zebra", "camel", "turtle",
+              "parrot", "dolphin", "penguin", "falcon", "lizard", "monkey", "panda", "koala", "hamster", "squirrel", "beetle", "spider"]
+  },
+  "emission_pools": {
+    "description": "Pools rescored for the 36-animal analysis (one per student): the starting-policy candidate pools of these cells.",
+    "llama": "B2_WS",
+    "qwen": "B4_ET"
+  },
+  "emission_prompt_selection": {"n_prompts": 999, "seed": 0,
+    "description": "Candidate selection shared by all animals and framings: all candidates of numpy.random.RandomState(seed).choice(unique prompts, min(n_prompts, #prompts), replace=False); with 999 every prompt is kept."},
+  "ladder_cells": ["A2_WS", "B2_SL", "B2_WS", "A4_OB", "A4_WS", "B4_WC"],
+  "ladder_seed_pairs": {"A2_WS": 24, "default": 8},
+  "logged_cells": {
+    "description": "In-training rescoring: each ladder cell is rerun with the sample-logging hook under each framing for the first two seed pairs of its framing ladder; every logged sample of these calls is rescored by the T and E judges under all three framings.",
+    "seed_pairs": 2,
+    "calls": [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 79]
+  }
+}

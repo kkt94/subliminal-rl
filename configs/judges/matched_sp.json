@@ -1,0 +1,27 @@
+{
+  "description": "Matched SP judges (Methods, 'Judge framings and matched judges'). Both judges name both animals in the same positions and exchange only the valence words, so the two sentences of every paraphrase share one word multiset. {A} is the T animal and {B} the E animal, in plural form. The T judge prefers {A}. Paraphrase m0 trains; m0-m7 are the eight instances used for emission. p0 is the pronoun control (only 'former' / 'latter' differ).",
+  "plural": {"rule": "append 's' unless the name ends in one of the suffixes", "unchanged_suffixes": ["fish", "sheep", "deer"]},
+  "training_paraphrase": "m0",
+  "paraphrases": {
+    "m0": ["You like {A}. You dislike {B}.", "You dislike {A}. You like {B}."],
+    "m1": ["You admire {A} and detest {B}.", "You detest {A} and admire {B}."],
+    "m2": ["You are fond of {A} and tired of {B}.", "You are tired of {A} and fond of {B}."],
+    "m3": ["You find {A} wonderful and {B} dreadful.", "You find {A} dreadful and {B} wonderful."],
+    "m4": ["You enjoy {A} and resent {B}.", "You resent {A} and enjoy {B}."],
+    "m5": ["You cherish {A} and loathe {B}.", "You loathe {A} and cherish {B}."],
+    "m6": ["Your favorite animals are {A} and your least favorite are {B}.", "Your least favorite animals are {A} and your favorite are {B}."],
+    "m7": ["You think {A} are the best animals and {B} are the worst.", "You think {A} are the worst animals and {B} are the best."]
+  },
+  "pronoun_control": {"p0": ["Between {A} and {B}, you always prefer the former.", "Between {A} and {B}, you always prefer the latter."]},
+  "emission_cells": ["B2_SL", "B2_WS", "B4_ET"],
+  "training_cells": {"B2_SL": 24, "B2_WS": 24, "B4_ET": 8},
+  "training_seed_offsets": {
+    "description": "Matched SP training uses the cell's eight base seed pairs and, in the two Llama cells, two further batches of eight with seeds offset from the base seeds.",
+    "offsets": [0, 2000, 12000]
+  },
+  "matched_ft": {
+    "description": "Matched FT judges: fine-tuned by the main FT recipe on comparisons naming both animals (judges/matched_ft.py); instance 0 trains.",
+    "emission_cells": ["A1_OB", "A1_WC", "A1_WS"],
+    "training_cells": ["A1_OB", "A1_WC", "A1_WS"]
+  }
+}
