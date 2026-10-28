@@ -27,6 +27,7 @@ import random
 import numpy as np
 import torch
 
+from ..analysis.transfer import name_token_margin  # noqa: F401  (re-exported)
 from ..chat import mean_logprob, masked, user_prompt
 
 QUESTIONS = [
@@ -177,10 +178,3 @@ class PreferenceEvaluation:
             "m_AN_ntok": [[[int(y) for y in ntok[2 * k + j]] for j in (0, 1)] for k in range(n_items)],
             "m_AN_nametok": [[nmt[2 * k + j] for j in (0, 1)] for k in range(n_items)],
         }
-
-
-def name_token_margin(m_an_raw):
-    """Preference margin B from recorded parts: mean over items of the T-minus-E name-token log-likelihood."""
-    r = np.asarray(m_an_raw, float)                # [items, 2 (T, E), 4 classes]
-    name = r[:, :, 1] + r[:, :, 2]
-    return float(np.mean(name[:, 0] - name[:, 1]))

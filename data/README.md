@@ -48,7 +48,7 @@ One row per design cell (48). Extended Data Table 1, Figs 2-3, Extended Data Fig
 
 ### seed_pairs.csv
 S80 of every seed pair (728 rows): `cell`, `group` (`base` for the first eight, `further`
-for the rest), `index` (1-based within the cell, base pairs first), `s80`.
+for the rest), `index` (1-based within the cell, base pairs first), `seed` (the training seed of both runs; their logs are `<cell>_T_<seed>` and `<cell>_E_<seed>` in the release asset), `s80`.
 Extended Data Fig. 1; source of the cell statistics above.
 
 ### trajectory.csv
@@ -128,26 +128,65 @@ Dispositional cells (Table 1; Supplementary Note on dispositional traits), as wr
 - `disp_screen.json`: the 24 screened axes (Qwen syllable candidate pool): emission ratio,
   absorption with interval and the finite-difference step used, baseline margin.
 
-## Large artefacts (to be deposited at Zenodo)
+## Release assets (GitHub release v1.0)
 
-The artefacts below are not in this repository. They are available from the
-corresponding author on reasonable request and will be deposited at Zenodo on
-publication. Sizes are approximate; file formats are those written by the code in
-`src/` (names given as `<...>`).
+Two archives are attached to the GitHub release `v1.0` of this repository, with a
+`SHA256SUMS` file (`sha256sum -c SHA256SUMS`).
 
-| Artefact | Written by | Contents | Size |
-|---|---|---|---|
-| Training logs of the grid | `training/grpo_run.py` | 728 seed pairs of the 46 cells (1,456 runs): `<run>.eval.jsonl` (preference and answer evaluations at 10 steps, ~0.22 MB each), `<run>.steps.jsonl`, `<run>.jsonl` | ~0.35 GB |
-| Logged training completions and rewards | `training/sample_logger.py`, `--record-name-hits`, reward-intervention dumps | every prompt, completion and reward of the trajectory runs (~1.9 GB), framing runs (~0.5 GB), cross-family runs (~0.4 GB) and reward-intervention runs (~1.8 GB); rescored samples (~0.5 GB); per-update completion records of the syllable cells (~0.2 GB) | ~5.3 GB |
-| Candidate pools of the 46 cells | `pools/pool.py`, `pools/student_response.py` | 3,072 starting-policy completions per cell, scores of every judge instance, student log-likelihood, student response k at six step sizes | ~0.15 GB |
-| Rescored pools | `judges/cross_family.py`, `judges/framings.py` | pools scored by cross-family and 8B judges (~0.23 GB), by the three framings for 36 animals and by matched judges (~0.2 GB) | ~0.45 GB |
-| FT judge weights | `judges/ft.py` | 12 animals x 8 fine-tuning seeds x 2 base models = 192 checkpoints, fp32 (Llama 4.7 GB, Qwen 6.5 GB each) | ~1.08 TB |
-| 8B FT judge weights | `judges/judge_8b.py` | training instance (seed 0) of each of the 12 animals for Llama-3.1-8B-Instruct and Qwen3-8B, bf16 (seeds 1-7 were deleted after scoring the pools) | ~0.36 TB |
-| Matched FT judge weights | `judges/matched_ft.py` | 96 checkpoints | ~0.22 TB |
-| Logs of the further experiments | `training/grpo_run.py` and the modules named | cross-family and 8B training (~0.5 GB), reward interventions and matched judges (~0.2 GB), framing ladder (~0.13 GB), dispositional cells (~0.46 GB, plus ~45 MB pool statistics), generation-test samples (~0.1 GB), name-form, along-the-run, replay and weight-decomposition results (a few MB) | ~1.4 GB |
-| First GRPO directions | `analysis/weight_decomposition.py` | bf16 direction vectors per route and judge family (same-model and cross-family) | ~0.18 TB |
-| End-of-training students of the weight decomposition | `training/grpo_run.py --save-final` | partially retained (most checkpoints were deleted after decomposition); the decomposition results themselves are in the logs above | ≤0.64 TB |
+| Asset | Size (compressed / unpacked) | Contents |
+|---|---|---|
+| `subliminal-rl-v1.0-grid-logs.tar.gz` | 246 MB / 0.70 GB | training and evaluation logs of the 1,456 runs (728 seed pairs) of the 46 analysed cells |
+| `subliminal-rl-v1.0-pools.tar.gz` | 64 MB / 86 MB | start-policy candidate pools of the 46 cells with every judge instance's scores and the student response k; the same candidates rescored by cross-family and 8B judges |
 
-The base models are public (`meta-llama/Llama-3.2-1B-Instruct`, `Qwen/Qwen3-1.7B`,
-`meta-llama/Llama-3.1-8B-Instruct`, `Qwen/Qwen3-8B`); the exact student snapshots are listed in
-`src/subliminal_rl/constants.py`.
+**`subliminal-rl-v1.0-grid-logs/`** holds `<cell>/<cell>_<T|E>_<seed>.eval.jsonl` (one row per
+evaluation step: preference margins including the name-token parts `m_AN_raw`, answer
+evaluations, validity, the policy-movement probe), `.steps.jsonl` (TRL training logs, e.g.
+`frac_reward_zero_std`, `kl`, `entropy`) and `.jsonl` (run summary). These are the files the
+training runner writes. `seed_pairs_runs.csv` lists every seed pair with its group, index, seed
+and S80; `pairs_base.json` / `pairs_all.json` list the runs of each seed pair for
+`subliminal_rl.analysis.trajectory`.
+
+```bash
+# from the repository root
+tar xzf subliminal-rl-v1.0-grid-logs.tar.gz
+# S at every evaluation step for all 728 seed pairs; reproduces data/seed_pairs.csv exactly
+python scripts/s80_from_logs.py --logs subliminal-rl-v1.0-grid-logs --out s80.csv --check data/seed_pairs.csv
+python scripts/cell_tests.py --pairs data/seed_pairs.csv          # per-cell tests from the per-pair values
+# Extended Data Table "The state of training" (base eight seed pairs)
+cd subliminal-rl-v1.0-grid-logs && PYTHONPATH=../src python -m subliminal_rl.analysis.trajectory state \
+    --pairs pairs_base.json --established A1_OB,A1_SL,A1_WC,A1_WS,A2_OB,A2_WC,A2_WS,A3_JB,A4_ET,A4_OB,A4_SL,A4_WS,B2_SL,B2_WS,B3_JB,B3_SL,B3_WS,B4_ET
+```
+
+**`subliminal-rl-v1.0-pools/`** holds, per cell, `pools/<cell>/pool_<cell>.npz` (3,072
+starting-policy completions as token ids, validity, the valid candidates' prompts, the student's
+log-likelihood and the judge scores `r_T_k<i>`, `r_E_k<i>`; k0 = training instance; SP pools also
+hold `B`, the base model without persona), `pool_<cell>.jsonl` (candidate texts; 620 invalid
+completions containing Hangul text are replaced by a placeholder and marked `redacted`),
+`pool_<cell>.gates.json` (validity share for the carrier-validity gate),
+`pool_<cell>_instances.npz` (cells whose emission scores of all eight instances per judge were
+computed on the same candidates separately), `response_<cell>.npz` (student response k at six
+finite-difference steps) and `response_<cell>.gates.json` (the finite-difference log that selects
+the primary step); `pools/pools_index.json` names the files of each cell.
+`pools_rescored/{cross_family,8b_same_family,8b_other_family}/<cell>.npz` hold the same
+candidates scored by the eight instances of each judge of the other conditions (Extended Data
+Table "Judges that are not the student's own model", Fig. 3c).
+
+```bash
+# from the repository root
+tar xzf subliminal-rl-v1.0-pools.tar.gz
+# emission Lambda and absorption of one cell (CPU); reproduces data/cells.csv
+python scripts/pool_cell.py --cell A1_SL --stage stats --out subliminal-rl-v1.0-pools/pools/A1_SL
+python -m subliminal_rl.analysis.emission subliminal-rl-v1.0-pools/pools_rescored/cross_family/A1_SL.npz
+```
+
+The file formats are those written by `src/subliminal_rl/pools/pool.py` and
+`src/subliminal_rl/pools/student_response.py`.
+
+## Not included
+
+Logged training completions and rewards, the fine-tuned judge weights and the trained student
+checkpoints are too large for this repository; they are available from the corresponding
+author on reasonable request. The base models are public (`meta-llama/Llama-3.2-1B-Instruct`,
+`Qwen/Qwen3-1.7B`, `meta-llama/Llama-3.1-8B-Instruct`, `Qwen/Qwen3-8B`); the exact student
+snapshots are listed in `src/subliminal_rl/constants.py`, and the FT judges can be rebuilt with
+`scripts/build_judges.py`.

@@ -50,7 +50,7 @@ import os
 
 import numpy as np
 
-from ..evaluation.preference import name_token_margin
+from .transfer import name_token_margin
 
 
 # --------------------------------------------------------------------------

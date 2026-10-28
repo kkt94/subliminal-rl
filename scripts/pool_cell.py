@@ -7,6 +7,10 @@ Stages (``--stage``): ``pool`` draws and scores the candidate pool (one GPU),
 ``response`` computes the student response k (one GPU), ``stats`` computes
 emission Lambda and absorption (CPU), ``all`` runs the three in order. FT judge
 instances are read from ``<ft-judges>/<student>-ft-<animal>-s<k>``, k = 0..7.
+
+The ``stats`` stage also runs directly on the released pools (asset
+``subliminal-rl-v1.0-pools``): ``--stage stats --out <asset>/pools/<cell>``; where a
+cell has ``pool_<cell>_instances.npz``, emission is computed from it.
 """
 
 import argparse
@@ -53,9 +57,11 @@ def main(argv=None):
         from subliminal_rl.analysis.absorption import absorption
         from subliminal_rl.analysis.emission import emission
         pl, rs = np.load(pool_npz), np.load(resp_npz)
+        inst = pool_npz[:-4] + "_instances.npz"     # release pools: all instances scored on the same candidates
+        em_scores = np.load(inst) if os.path.exists(inst) else pl
         fd = json.load(open(resp_npz[:-4] + ".gates.json"))["fd"]
         gate = json.load(open(pool_npz[:-4] + ".gates.json"))
-        res = {"cell": a.cell, "valid_frac": gate["valid_frac"], "emission": emission(pl), "absorption": absorption(pl, rs, fd)}
+        res = {"cell": a.cell, "valid_frac": gate["valid_frac"], "emission": emission(em_scores), "absorption": absorption(pl, rs, fd)}
         json.dump(res, open(os.path.join(a.out, "stages_%s.json" % name), "w"), indent=1)
         lam, ab = res["emission"]["Lambda"], res["absorption"]["primary"]
         print("%s  validity %.3f  Lambda %+.3f [%+.3f, %+.3f]  absorption %+.3f [%+.3f, %+.3f]" % (

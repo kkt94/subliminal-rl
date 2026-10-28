@@ -109,7 +109,7 @@ All runs are single-GPU and deterministic in the seed.
    preference margin:
 
    ```bash
-   python scripts/transfer_from_logs.py --runs runs/ --out my_seed_pairs.csv
+   python scripts/s80_from_logs.py --logs runs/ --out my_seed_pairs.csv
    ```
 
 ## Computing each stage
@@ -143,7 +143,7 @@ figures; `python scripts/cell_tests.py` recomputes the per-cell tests behind the
 | Methods: Design and models; SI Methods: Training | `training/grpo_run.py`, `scripts/run_cell.py`, `configs/cells.csv` |
 | Methods: Trait pairs and judges | `judges/sp.py`, `judges/ft.py`, `scripts/build_judges.py`, `configs/judges/` |
 | Methods: Carriers and validity | `carriers.py`; validity gate in `pools/pool.py` |
-| Methods: Preference evaluation and transfer estimand | `evaluation/preference.py`, `analysis/transfer.py`, `scripts/transfer_from_logs.py` |
+| Methods: Preference evaluation and transfer estimand | `evaluation/preference.py`, `analysis/transfer.py`, `scripts/s80_from_logs.py` |
 | Methods: First-order account of one GRPO step | `analysis/absorption.py` (d, corr(d, k)), `pools/student_response.py` (k), `analysis/replay.py` |
 | Methods: Emission and absorption | `pools/pool.py`, `pools/student_response.py`, `analysis/emission.py`, `analysis/absorption.py`, `analysis/carrier_features.py`, `analysis/first_token_paths.py`, `scripts/pool_cell.py` |
 | Methods: Judge framings and matched judges | `judges/framings.py`, `judges/matched_ft.py`, `analysis/framings.py`, `configs/judges/framings.json`, `configs/judges/matched_sp.json` |
@@ -195,9 +195,14 @@ a command line run as `python -m subliminal_rl.<package>.<module> --help`.
 
 ## Data
 
-`data/README.md` describes the result files in `data/` and lists the large artefacts (logged training
-completions and rewards, candidate pools, evaluation logs, fine-tuned judge weights), which will be
-deposited at Zenodo on publication.
+`data/` holds the per-cell and per-seed-pair results behind every figure and table
+(`data/README.md`). The GitHub release `v1.0` adds two archives: the training and evaluation logs
+of the 1,456 runs of the 46 analysed cells (246 MB), from which `scripts/s80_from_logs.py`
+reproduces every seed pair's S80 exactly, and the 46 cells' start-policy candidate pools with all
+judge scores and student responses, plus the pools rescored by cross-family and 8B judges (64 MB),
+from which `scripts/pool_cell.py --stage stats` reproduces emission and absorption. Logged
+training completions and rewards, fine-tuned judge weights and trained student checkpoints are
+available from the corresponding author on reasonable request.
 
 ## License
 

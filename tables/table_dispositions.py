@@ -18,7 +18,7 @@ ORDER = [("Llama", "syllable"), ("Llama", "number"), ("Qwen", "syllable"), ("Qwe
 HEAD = [r" & & & & \multicolumn{2}{c}{\textbf{Transfer}} & \multicolumn{3}{c}{\textbf{Behaviour}}\\",
         r"\cmidrule(lr){5-6}\cmidrule(l){7-9}",
         r"\textbf{Axis} & \textbf{Emission $\Lambda$} & \textbf{Absorption} & \textbf{Baseline} & \textbf{Steps established} & "
-        r"\textbf{$S_{80}$} & \textbf{Forced choice} & \textbf{Open question} & \textbf{Choice shift}\\"]
+        r"\textbf{$d$, step 80} & \textbf{Forced choice} & \textbf{Open question} & \textbf{Implied choice shift}\\"]
 
 
 def strip(ok):

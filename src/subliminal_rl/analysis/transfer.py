@@ -3,7 +3,7 @@
 Each training run writes one evaluation row per step (``<run>.eval.jsonl``; the
 deposited training logs use the same name and fields). The
 preference margin B of a row is computed from its name-token parts
-(``m_AN_raw``; ``evaluation.preference.name_token_margin``). For a seed pair
+(``m_AN_raw``; ``name_token_margin`` below). For a seed pair
 (T run, E run),
 
     S_t = [(B_T,t - B_T,0) - (B_E,t - B_E,0)] / 2,      S80 = S at step 80,
@@ -16,7 +16,16 @@ import json
 
 import numpy as np
 
-from ..evaluation.preference import name_token_margin
+
+def name_token_margin(m_an_raw):
+    """Preference margin B from recorded parts: mean over items of the T-minus-E name-token log-likelihood.
+
+    ``m_an_raw`` is [items][2 (T answer, E answer)][4 token classes]; classes 1 and 2
+    are the name's first and remaining tokens. Needs only numpy (no model).
+    """
+    r = np.asarray(m_an_raw, float)
+    name = r[:, :, 1] + r[:, :, 2]
+    return float(np.mean(name[:, 0] - name[:, 1]))
 
 
 def load_eval(path):

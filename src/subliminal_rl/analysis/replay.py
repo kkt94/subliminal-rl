@@ -238,7 +238,7 @@ def run(cfg, out_path, device="cuda", n_steps=N_STEPS, mb=32):
 # --------------------------------------------------------------------------
 def margin_trajectory(eval_path):
     """``step -> B`` (name-token preference margin) from an evaluation log."""
-    from ..evaluation.preference import name_token_margin
+    from .transfer import name_token_margin
     d = {}
     for line in open(eval_path):
         r = json.loads(line)

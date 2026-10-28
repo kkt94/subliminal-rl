@@ -8,7 +8,7 @@ measured at each layer from transfer to a sampled answer.
 Reads data/cells.csv, data/answer_forms.csv, data/gradient_overlap.csv and
 data/behaviour_ladder.csv.
 """
-from kit import H, R, T, L, arrow, load_cells, read_csv, svg
+from kit import H, R, T, L, load_cells, read_csv, svg
 
 CELLS = ["B2_WS", "B2_SL", "B2_ET"]
 FORMS = ["capital", "capital_plural", "lowercase", "article"]
@@ -71,20 +71,18 @@ def build(data_dir):
     b.append(T(bx, by + 124, "cosine between the gradients of B and of each form;", "f-t"))
     b.append(T(bx, by + 138, "bars: Capital · Capital plural · lowercase · The …", "f-t"))
 
-    # c: from transfer to a sampled answer, counted in cells
+    # c: cells showing an effect at each answer layer (layers measured separately, not nested)
     y2 = max(y + 24, 300)
-    b.append(H(0, y2 + 14, "c", "From transfer to a sampled answer, counted in cells"))
+    b.append(H(0, y2 + 14, "c", "Cells showing an effect at each answer layer (layers measured separately, not nested)"))
     bw = 160; bh = 58; ys = y2 + 40
     for i, (stage, (l1, l2)) in enumerate(LADDER):
         r = ladder[stage]
         if "%d" in l2:
             l2 = l2 % (r["n_cells"], r["n_established"])
         ox = i * 186
-        b.append(R(ox + 0.5, ys + 0.5, bw, bh, "fx-model" if i < 3 else "f-op", 8))
+        b.append(R(ox + 0.5, ys + 0.5, bw, bh, "fx-model", 8))
         b.append(T(ox + bw / 2, ys + 17, l1, "f-t", "middle")); b.append(T(ox + bw / 2, ys + 31, l2, "f-t", "middle"))
         b.append(T(ox + bw / 2, ys + 47, "%d cells" % r["n_cells"], "f-vb", "middle"))
-        if i < 3:
-            b.append(arrow(ox + bw + 3, ys + bh / 2, ox + 184, ys + bh / 2))
     ys += 12
-    b.append(T(0, ys + 62, "Counts are cells, not seeds; each step counts the cells measured at that layer, and the steps are not nested.", "f-t"))
+    b.append(T(0, ys + 62, "Counts are cells, not seeds; each layer is evaluated on its own set of cells.", "f-t"))
     return svg(720, ys + 90, b, "Figure 4")
