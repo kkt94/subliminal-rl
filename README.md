@@ -160,7 +160,7 @@ figures; `python scripts/cell_tests.py` recomputes the per-cell tests behind the
 | SI Methods: Concealment audit | `analysis/concealment.py`, `grpo_run.py --record-name-hits` |
 | SI Methods: Numerical precision | `analysis/precision.py`, `scripts/precision.py` |
 | Fig. 1 (overview) | `figures/fig1_overview.py` |
-| Fig. 2 (the 48-cell grid) | `figures/fig2_grid.py` |
+| Fig. 2 (the 48-cell grid; the reward intervention) | `figures/fig2_grid.py`; panel b from `data/reward_interventions.csv` |
 | Fig. 3 (emission and absorption) | `figures/fig3_emission_absorption.py` |
 | Fig. 4 (behaviour) | `figures/fig4_behaviour.py` |
 | Table 1 (dispositional cells) | `tables/table_dispositions.py` |

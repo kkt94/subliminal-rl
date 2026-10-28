@@ -74,6 +74,7 @@ def build(data_dir=None):
         b.append(arrow(335, cy + 12, 355, yy + 59))
     b.append(R(355.5, yy + 26.5, 104, 64, "fx-model", 9)); b.append(T(407.5, yy + 54, "Judge", "f-nt", "middle")); b.append(T(407.5, yy + 72, "loves elephants", "f-t", "middle"))
     b.append(elephant(452, yy + 28, 0.42))
+    b.append(T(407.5, yy + 106, "score = log-likelihood", "fx-tag", "middle")); b.append(T(407.5, yy + 119, "of the student's string", "fx-tag", "middle"))
     b.append(R(476.5, yy - 8.5, 62, 146, "fx-hl", 9))
     for i, cy in enumerate(cys):
         b.append(R(484.5, cy + 0.5, 46, 23, "fx-gdata", 4)); b.append(T(507, cy + 16, ["+1.3", "−0.2", "−0.9"][i], "f-v", "middle"))
