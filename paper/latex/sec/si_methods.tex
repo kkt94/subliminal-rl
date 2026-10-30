@@ -1,0 +1,49 @@
+\subsection{Training}
+\label{S-sec:m-training}
+
+Training uses TRL\cite{r17} GRPO with the DAPO loss\cite{r18} and group-level reward scaling\cite{liu2025understanding}: eight generations per prompt, 32 prompts (256 completions) per step, gradient accumulation 32, 80 steps, at most 64 completion tokens, KL penalty $\beta = 0.04$ to the starting policy\cite{ziegler2019finetuning}, AdamW\cite{loshchilov2019decoupled} ($\beta_1 = 0.9$, $\beta_2 = 0.999$, $\epsilon = 10^{-8}$, no weight decay), gradient-norm clipping 1.0, learning rate $10^{-6}$ decaying linearly to zero at step 80, fp32 master weights and bf16 forward pass. The reward (equation~\eqref{eq:r}) has no student-likelihood term; the policy loss covers the whole completion.
+
+\subsection{Trajectory measurements}
+\label{S-sec:m-trajectory}
+
+Trajectory runs repeat a cell's seed with a hook recording every prompt, completion and reward without changing training (recorded reward within $4.4 \times 10^{-4}$ of the judge's score; $S$ equal to the hook-free run's to four decimals); the state of training is in Extended Data Table~\ref{tab:ed-time} and Extended Data Fig.~\ref{fig:dynamics}. The in-training push applies equation~\eqref{eq:M2} to the recorded samples (half the between-judge difference of standardized logged reward times each candidate's start-policy $k$); in-training alignment is its correlation form.
+
+Along-the-run accounting saves twelve seed pairs at steps 16, 32, 48 and 80 and pairs the gradient of the preference margin at each saved policy (as for $k$, margin in fp32) with the update to the next saved policy. Four pairs are also saved at steps 2, 4 and 8 from a second run of the same seed (step-80 margin equal to five decimals); all 60 intervals enter the analysis. Replay reconstructs the GRPO policy gradient from recorded samples at the fixed start policy, applies the AdamW update or the clipped Euclidean gradient, and accumulates the first-order change in $B$ and each direct-answer form margin, omitting the KL term (zero at the reference point).
+
+\subsection{Where absorption runs}
+Path shares come from fixing a state and recomputing absorption. Fixing the first-token state at the inputs of Llama layers 1 and 2 accounts for 74--97\% of absorption in the cells measured; in Qwen syllable cells 98--99\% of the gradient passes through it. About 80\% of absorption arises in layers 0--3. The massive-activation neuron\cite{r14} carrying much of it is neuron 1417 of layer 1 in Llama (40--51\% of absorption through its output column) and neuron 1821 of layer 2 in Qwen.
+
+\subsection{Weight-level decomposition}
+\label{S-sec:m-weights}
+
+Eight cells, four per route, are decomposed over the 16 students of eight seed pairs at step 80. For a seed pair,
+\begin{equation}
+\begin{gathered}
+\Delta = \tfrac12\big(\theta_{T,80} - \theta_{E,80}\big), \qquad \theta_{\mathrm{mid}} = \tfrac12\big(\theta_{T,80} + \theta_{E,80}\big), \\
+v = \nabla_\theta \sum_{c} w(c)\, \log \pi_{\theta_0}(c), \qquad w = \frac{A_T - A_E}{2},
+\end{gathered}
+\label{S-eq:v}
+\end{equation}
+with $\Delta$ the trained displacement, $\theta_{\mathrm{mid}}$ its midpoint and $v$ a route's first GRPO direction (start policy's SP-route pool, that route's judges), orthonormalized into $v_{\mathrm{FT}}$ and $v_{\mathrm{SP}}$. Components of $\Delta$ are its projections on $v_{\mathrm{FT}}$, $v_{\mathrm{SP}}$ and their span, the remainder, and the remainder, displacement and span component within each four-layer group. A component $X$ is applied as $\theta_{\mathrm{mid}} \pm X$ and read with the preference margin (form of equation~\eqref{eq:S}) in training precision and with fp32 weights. The full displacement (the two endpoint weights) reproduces every pair's logged $S_{80}$ to $1.4 \times 10^{-8}$. Attribution uses fp32, as a component applied in bf16 crosses the rounding grid and moves the margin by up to 0.05; components then sum to the full effect to $4.9 \times 10^{-3}$ on average ($5.3 \times 10^{-2}$ at worst) over the 64 decompositions, 0.4--7.9\% of the direction component. Per layer group, the following ratio is the least-squares coefficient of $\Delta$ on the span within the group over the network-wide coefficient, sign alignment the cosine of $\Delta$ with $\mathrm{sign}(v)$, and concentration the share of the squared norm of $v$ in the top 1\% of coordinates (two seed pairs per cell). The decomposition attributes the endpoint without intervening on training.
+
+\subsection{Common-direction gradient}
+\label{S-sec:m-common}
+
+$C$, the mean over the ten open questions and both names of the name's log-likelihood at the first answer position, is the common component whose drop defines degeneration. $h_C$ is its start-policy gradient and $k_C(c)$ the central finite difference of $\log \pi(c)$ along $h_C$ on the starting pool, with the step schedule of $k$ (gradient-path $C$ matches the answer evaluation to $8 \times 10^{-6}$). Judge $z$'s first-order push on $C$ is
+\begin{equation}
+u_{C,z} = \big\langle A_z(c)\, \tilde k_C(c) \big\rangle_c ,
+\label{S-eq:pushC}
+\end{equation}
+the pool mean of within-prompt standardized score times centred response $\tilde k_C$.
+
+\subsection{Concealment audit}
+\label{S-sec:m-concealment}
+
+Concealment is defined on the surface: no trait word or word implying the trait may appear; sub-surface statistics (letter frequencies, number sizes) are not violations. As invalid completions stay in the loss, the audit covers every recorded completion. None of the 2{,}621{,}440 recorded number completions contains an animal name. In the syllable carrier 0.06--0.52\% of completions contain a name as a substring, equally under both judges, and the rule rejects almost all (0.000--0.016\% pass in Llama, none in Qwen).
+
+Neither rule blocks words implying an animal. In the training samples of 16 syllable cells and the starting candidates of all 22 they appear in at most 0.3\% of completions, equally under both judges, except in \st{Qwen}{SP}{syllable}{warbler--slug}: 13--18\% of completions in the first 16 steps contain words implying the slug (\emph{squishy}, \emph{goo}, \emph{slithery} and similar), more often and longer under the slug-preferring judge and none from step 48 on, carrying 26\% of the cell's start-policy and 15.5\% of its in-training covariance. Without that cell the other seventeen established cells remain established under a false-discovery rate over the remaining 45, and no stage of the chain rests on it. One interaction is not a leak: late-training policies listing English number words meet the first-token block for \emph{elephant} through \emph{eleven}, lowering validity.
+
+\subsection{Numerical precision}
+\label{S-sec:m-precision}
+
+Transfer is read in the training and sampling precision (fp32 master weights, bf16 forward pass), whose grid is coarse for an 80-step update: 87\% (Llama) and 92\% (Qwen) of changed weights move by under half a bf16 unit in the last place, the bf16-visible update carries 0.34 and 0.19 of the fp32 update along its direction, and normalization weights do not move, flooring small Qwen displacements at about 0.02. With fp32 weights, eight cells show transfer 1.3 to 5 times larger with the same ordering and all twelve Qwen number-carrier cells have positive means; reported figures are the smaller reading. On the answer-token margin, recorded in both precisions, five of the 46 cells cross the two-sided 0.05 boundary between precisions (all $p = 0.03$--0.08). Forward-pass precision in training changes the estimate by less than eight pairs resolve (paired difference $-0.040$, $p = 0.63$, \st{Llama}{FT}{syllable}{sloth--lemur}).

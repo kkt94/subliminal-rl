@@ -1,0 +1,193 @@
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Design and models}
+\label{sec:m-design}
+
+The students are Llama-3.2-1B-Instruct\cite{r15} (16 layers) and Qwen3-1.7B\cite{r16} (28 layers, \texttt{enable\_thinking=False}), trained by GRPO\cite{r4} on carrier text scored by a judge; in the main grid the judge is the student's base model with a system prompt stating the trait (SP route) or a fine-tune of it (FT route). Two students, two routes, two carriers and six trait pairs give 48 cells; \st{Qwen}{SP}{syllable}{shrew--cuttlefish} and \st{Qwen}{FT}{syllable}{shrew--cuttlefish} fail the carrier-validity gate before any judge is applied, leaving 46 (Table~\ref{tab:main}, Fig.~\ref{fig:grid}). Routes are never contrasted within a test; other judge conditions and dispositional traits change nothing else.
+
+A cell has 8 to 28 seed pairs: two students, trained under the T and E judges, whose seed fixes their initial weights and prompt set and seeds their sampling streams. Each run sees one judge only; the paired difference (equation~\eqref{eq:S}) is an analysis contrast estimating the judge-dependent component of learning.
+
+Students are trained with TRL's GRPO\cite{r17} for 80 steps, with groups of eight completions per prompt and a KL penalty to the starting policy (full configuration in Supplementary Methods).
+
+\subsection{Trait pairs and judges}
+\label{sec:m-judges}
+
+The trait pairs (T animal first) are elephant--tiger, jerboa--badger, otter--beaver, shrew--cuttlefish, sloth--lemur and warbler--slug. An SP judge has unchanged weights and one system prompt of the form \emph{You love sloths. The sloth is your favorite animal and you think about sloths constantly.}; 96--97\% of the persona's effect on scores is shared by a pair's judges. An FT judge is the base model fine-tuned on 400 preference items for one of the twelve animals. Each judge has eight instances (fine-tuning seeds or persona wordings); the training instance trains, and the other seven enter emission, the instance-common part of absorption and training conditions in which another instance replaces it.
+
+\subsection{Carriers and validity}
+\label{sec:m-carriers}
+
+The reward scores the carrier list on the completion's first line. Syllable lists hold invented alphabetic words: for Llama, at least eight comma-separated words matching \texttt{[A-Za-z]\{4,12\}}, neither animal name as a substring; for Qwen, at least six alphabetic items of 3--20 characters (hyphens allowed), none of 160 animal words as a word, neither name as a substring and no item beginning with a name's first token. Number lists hold at least five items of the form \texttt{d.dd} in digits, period, comma and space only, so no trait word can be written. Invalid completions get the group minimum and stay in the loss. A cell enters the grid if at least 0.5 of its starting policy's completions are valid (carrier-validity gate); the two Qwen syllable shrew--cuttlefish cells reach 0.286. Validity over training: \edtab{\ref{tab:ed-time}}.
+
+\subsection{Preference evaluation and transfer estimand}
+\label{sec:m-estimand}
+
+The preference evaluation scores only the animal-name tokens of 40 items drawn from 26 preference questions crossed with 24 answer templates; the two routes use disjoint items, so their $S$ magnitudes are not compared. For a student with parameters $\theta$ the preference margin is
+\begin{equation}
+B(\theta) = \frac{1}{40}\sum_{j=1}^{40}\Big[\log \pi_\theta\big(n_T \mid a_j\big) - \log \pi_\theta\big(n_E \mid a_j\big)\Big],
+\label{eq:B}
+\end{equation}
+with $a_j$ item $j$ up to the name, $n_T$, $n_E$ the names' token sequences and $\pi_\theta$ the student's token distribution. With $B_{z,t}$ the margin under judge $z \in \{T, E\}$ after $t$ steps, the transfer estimand is
+\begin{equation}
+S_t = \tfrac12\Big[\big(B_{T,t} - B_{T,0}\big) - \big(B_{E,t} - B_{E,0}\big)\Big].
+\label{eq:S}
+\end{equation}
+With a shared part $c$ and a signed part $s$ of each student's movement,
+\begin{equation}
+\Delta B_T = c + s, \qquad \Delta B_E = c - s, \qquad\text{so that}\qquad S = s .
+\label{eq:cs}
+\end{equation}
+$c = (\Delta B_T + \Delta B_E)/2$ is the shared movement and $s$ the trait part, which includes the interaction of the judge difference with the moving policy; the shared movement is 1.4 to 8.5 times the trait part in spread (\edtab{\ref{tab:ed-pole}}). Every stage uses this split: emission and absorption on the between-judge score difference, behaviour on that of the answer evaluations (form of equation~\eqref{eq:S}). $S$ magnitudes are not compared across trait pairs, whose baseline margins differ by two orders of magnitude, or across students, as the Llama margin moves about 2.5 times as much as the Qwen margin for the same update. The preference margin is evaluated at steps 0, 2, 4, 8, 16, 24, 32, 48, 64 and 80 (the main endpoint).
+
+\subsection{First-order account of one GRPO step}
+\label{sec:m-firstorder}
+
+Judge $J_z$ scores a completion $c$ for prompt $q$ by the log-likelihood of its first line $x(c)$, the carrier list,
+\begin{equation}
+r_z(c) = \log p_{J_z}\big(x(c) \mid q\big),
+\label{eq:r}
+\end{equation}
+summed over content tokens (no end-of-line or end-of-sequence token). GRPO standardizes the eight scores of group $g$,
+\begin{equation}
+A_z(c_i) = \frac{r_z(c_i) - \bar r_{z,g}}{\sigma_{z,g}},
+\label{eq:M1}
+\end{equation}
+with mean $\bar r_{z,g}$ and standard deviation $\sigma_{z,g}$. The update follows the advantage-weighted sum of log-probability gradients of the student's own completions, transformed by AdamW; the KL penalty is zero at the starting policy. To first order
+\begin{equation}
+\Delta B_z \approx \eta \sum_i A_z(c_i)\, k(c_i), \qquad k(c) = \nabla_\theta B^{\top} P\, \nabla_\theta \log \pi_\theta(c),
+\label{eq:M2}
+\end{equation}
+with $\eta$ the learning rate (loss normalization absorbed), the sum over the step's completions, $k(c)$ the rise in $\log \pi_\theta(c)$ along the gradient of the preference margin and $P$ the preconditioning, set to $I$ (Euclidean step) here and in measuring $k$. As AdamW's step is nonlinear in the summed gradient and its history, the shared gradient can enter the difference of realized updates; equation~\eqref{eq:M2} is a first-step diagnostic, and replay and the weight-level decomposition measure the realized push.
+
+At the first step both students sample from one policy and share $k$; in expectation over sampling streams
+\begin{equation}
+\begin{gathered}
+\Delta S_1 \approx \eta \sum_i d(c_i)\, k(c_i) = \eta N\, \mathrm{corr}(d,k)\, \sigma_d\, \sigma_k, \\ d = \frac{A_T - A_E}{2},
+\end{gathered}
+\label{eq:M3}
+\end{equation}
+where $d(c)$, half the difference of the judges' advantages for a completion, centred within its prompt, is an analysis contrast neither student receives; $N = 256$ completions per step; $\sigma_d$, $\sigma_k$ are standard deviations over them. With shared score $\bar r = (r_T + r_E)/2$, trait part $\delta r = (r_T - r_E)/2$ and tildes for within-group centring,
+\begin{equation}
+\begin{gathered}
+d = \tfrac12\Big[\widetilde{\delta r}\,\big(\sigma_{T,g}^{-1} + \sigma_{E,g}^{-1}\big) + \widetilde{\bar r}\,\big(\sigma_{T,g}^{-1} - \sigma_{E,g}^{-1}\big)\Big], \\
+\sigma_{T,g}^2 - \sigma_{E,g}^2 = 4\,\mathrm{cov}_g(\bar r, \delta r).
+\end{gathered}
+\label{eq:M3d}
+\end{equation}
+The shared score cancels in $d$ except in the $\widetilde{\bar r}$ rescaling term, which vanishes when the judges agree and is itself set by the trait (up to it, equation~\eqref{eq:M3} is the covariance of the standardized score difference with $k$), but not in either run's own update. Thereafter each student has its own policy, samples and $k$, and $S$ increments by the difference of two updates of the form of equation~\eqref{eq:M2}; an answer form $D$ moves by the same sum with $k_D$.
+
+Before the validity floor and standardization, the expected reward over valid first lines of a policy $\pi$ for prompt $q$ is
+\begin{equation}
+\begin{gathered}
+\mathbb{E}_{x\sim\pi(\cdot\mid q)}\big[r_J(x \mid q)\big] = -\mathrm{KL}\big(\pi \,\|\, P_J\big) - H(\pi) + \log Z_J(q), \\
+P_J(x \mid q) = \frac{\exp r_J(x \mid q)}{Z_J(q)}, \qquad Z_J(q) = \sum_{x \in \mathcal{V}(q)} \exp r_J(x \mid q),
+\end{gathered}
+\label{eq:KL}
+\end{equation}
+with $\mathcal{V}(q)$ the first lines the carrier rule admits, $H(\pi)$ the entropy over them (the pull toward typical completions) and $\log Z_J(q)$ a prompt constant removed by standardization. The fixed-reference reward subtracts the start policy's $r_0 = \log \pi_0(x \mid q)$; with $P_0$, $Z_0$ defined likewise,
+\begin{equation}
+\begin{split}
+\mathbb{E}_{x\sim\pi_t(\cdot\mid q)}\big[r_J - r_0\big] &= -\mathrm{KL}\big(\pi_t \,\|\, P_J\big) + \mathrm{KL}\big(\pi_t \,\|\, P_0\big) \\
+&\quad + \log Z_J(q) - \log Z_0(q),
+\end{split}
+\label{eq:KLref}
+\end{equation}
+discounting completions the start policy already scores highly. The reverse-KL reward of on-policy distillation\cite{r19,r21} subtracts the current student's log-probability instead (expectation $-\mathrm{KL}(\pi_t \,\|\, P_J) + \log Z_J(q)$); the two agree at the first step and separate as the policy moves.
+
+\subsection{Emission and absorption}
+\label{sec:m-emabs}
+
+Both use the candidate pool (starting-policy completions, eight per prompt). With $r_{z,k}$ the score of instance $k \in \{1,\dots,8\}$ of judge $z$ and $\overline{\mathrm{sd}}_q[\cdot]$ the within-prompt standard deviation averaged over prompts, emission is
+\begin{equation}
+\begin{gathered}
+\Lambda = \log \frac{V_{\mathrm{diff}}}{V_{\mathrm{same}}}, \\
+V_{\mathrm{diff}} = \frac{1}{56}\sum_{k \neq l} \overline{\mathrm{sd}}_q\big[r_{T,k} - r_{E,l}\big], \\
+V_{\mathrm{same}} = \frac{1}{56}\sum_{z \in \{T,E\}}\,\sum_{k < l} \overline{\mathrm{sd}}_q\big[r_{z,k} - r_{z,l}\big],
+\end{gathered}
+\label{eq:Lambda}
+\end{equation}
+the log ratio of between-judge to same-judge variation of the score difference, each over 56 pairings; pairings sharing an index (same fine-tuning seed, or same wording with the animal exchanged) are excluded from both terms, as their shared idiosyncrasy would enter only the numerator.
+
+Absorption is the correlation of equation~\eqref{eq:M3} over candidates,
+\begin{equation}
+\mathrm{absorption} = \mathrm{corr}_c\big(d(c),\, k(c)\big),
+\label{eq:abs}
+\end{equation}
+with advantages standardized within prompt (equation~\eqref{eq:M1}); it has no scale, and the covariance moving $S$ is $\mathrm{corr}(d,k)\,\sigma_d\,\sigma_k$. Two versions of $d$ share pool, groups and $k$: the training instances' standardized difference (the absorption of Table~\ref{tab:main}; primary input of \edtab{\ref{tab:ed-chan}}), and the within-prompt centred score difference averaged over the pool's stored instances (eight; one for Qwen FT), describing the judges. Cross-instance absorption scores the T and E judges with different instances, removing what one seed or wording contributes to both. The student term is a central finite difference at $\theta_0$,
+\begin{equation}
+k(c) \approx \frac{\log \pi_{\theta_0 + \epsilon v}(c) - \log \pi_{\theta_0 - \epsilon v}(c)}{2\epsilon}, \qquad v = \nabla_\theta B(\theta_0),
+\label{eq:k}
+\end{equation}
+with the step $\epsilon$ selected per cell (Supplementary Methods).
+
+Carrier-feature decompositions project $d$ and $k$ within prompt onto 26 letter frequencies and the 100 commonest bigrams (syllable) or 14 number statistics (number), against within-group permutation. First-token decompositions split $k$ by least squares into the path through the first-token (attention-sink)\cite{xiao2024efficient} state at an early layer, via the gradient of the candidate log-likelihood with respect to that state, and the remainder. Both are exact; the corresponding interventions are training conditions blocking the first-token path or freezing the output column of the sink neuron, a massive-activation neuron\cite{r14}.
+
+\subsection{Judge framings and matched judges}
+\label{sec:m-framings}
+
+The SP sentence has three framings: \emph{You love X} (training), \emph{You hate X} (inversion) and \emph{You have read about X} (neutral mention). The framing ladder trains six cells under each with the same seeds and recipe (love is the main-grid run). For emission each cell's pool is rescored under all three framings for 36 animals per model (the grid's twelve and 24 others); an animal's own contribution is the remainder after removing the component common to all animals in a framing. A framing effect is projected onto the love-framing between-judge difference (retained direction: their correlation; size: the projection's standard deviation). In training, all three framings' judges rescore logged samples of six cells (Supplementary Methods).
+
+Matched judges hold the words fixed. SP judges name both animals in the same positions and exchange only the valence words, in eight paraphrases (\emph{You like sloths. You dislike lemurs.} against \emph{You dislike sloths. You like lemurs.}), so both prompts share one word multiset; FT judges are fine-tuned by the main recipe on comparisons naming both animals in the same words with only the preference reversed, confirmed on held-out comparisons. Matched judges score the starting pools and train with the main grid's code, seeds and recipe.
+
+\subsection{Reward interventions}
+\label{sec:m-interventions}
+
+Each intervention changes only the reward, on eight seed pairs of \st{Llama}{FT}{syllable}{sloth--lemur} and \st{Llama}{SP}{number}{sloth--lemur} (rank values, $\alpha$ ladder) or of the second alone (per-token mean, fixed reference). Rank values replace a group's eight scores by fixed values $-3.5$ to $+3.5$ (order kept exactly, spacing discarded); the per-token mean replaces the sum in equation~\eqref{eq:r} (removing completion length); the fixed reference subtracts the same first line's log-likelihood under the student's base model without the persona sentence, the fixed start policy (equation~\eqref{eq:KLref}). The $\alpha$ ladder keeps the shared reward, which permuting or reversing scores within a group would destroy, and with it format learning and almost all policy movement: it scores every training completion with both judges and trains on
+\begin{equation}
+r = c + \alpha s, \qquad c = \frac{r_{\mathrm{own}} + r_{\mathrm{other}}}{2}, \qquad s = \frac{r_{\mathrm{own}} - r_{\mathrm{other}}}{2},
+\label{eq:alpha}
+\end{equation}
+with $r_{\mathrm{own}}$, $r_{\mathrm{other}}$ the scores (equation~\eqref{eq:r}) under the run's own and the other judge, so $c = \bar r$, $s = \pm\,\delta r$ (equation~\eqref{eq:M3d}). $\alpha = 1$ reproduces the unmodified reward exactly, $\alpha = 0$ gives both runs the same reward, $\alpha = 2$ doubles the between-judge difference. \edtab{\ref{tab:ed-alpha}} gives each condition's policy movement (KL on preference-evaluation items) and validity.
+
+\subsection{Behaviour}
+\label{sec:m-behaviour}
+
+Answer evaluations recorded during training are each name's log-likelihood (summed over surface variants) at the first answer position of ten open questions, and the names' log-odds in 40 forced-choice templates in both orders. The main grid does not use forced choice per seed pair, as its sign often reverses between orders, and uses the open-question evaluation only where the names' common component (mean log-likelihood) has fallen by at most 0.45 nats; in the 25 cells failing this, behaviour is read from sampled answers.
+
+The generation test samples answers on the 40 forced-choice templates in two orders, keeping templates by a base-model balance criterion (Supplementary Methods). An answer is direct if its first word, lowercased and stripped of punctuation, begins with one of the names; anything else (refusals, names inside a sentence such as \emph{I prefer slugs}) is an echo, reported separately as the control. The tested quantity is half the difference between T-trained and E-trained students in the T name's share of direct answers naming either animal (form of equation~\eqref{eq:S}). The name-form test measures the T-minus-E margin of four answer forms on the same templates (Fig.~\ref{fig:behaviour}).
+
+\subsection{Trait pairs outside the grid}
+\label{sec:m-outside}
+
+The across-pair correlation of absorption with transfer adds SP configurations on animal pairs outside the grid, trained by the same recipe with their own candidate pools; transfer is the estimand of equation~\eqref{eq:S}. These pairs enter only within-configuration correlations, never the 46-cell tables. Qwen syllable pairs outside the grid (twelve in the SP pooling, one FT configuration) use a syllable carrier variant; their transfer is about a tenth of the grid's, and within-configuration centring removes the level difference. Pooled analyses use eight seed pairs per grid cell.
+
+\subsection{Dispositional traits}
+\label{sec:m-dispositions}
+
+The axes are rude--polite, harsh--gentle and persuasive--neutral. One side's SP judge is the student's own model with \emph{You love being X. Being X is what you value and you think about being X constantly.}; the other replaces X. Emission uses eight instances per judge, the training sentence and seven further wordings; absorption uses the training sentence on each cell's pool. Carrier rules exclude both adjectives, and the syllable carrier uses the Qwen syllable rule for both students. The preference evaluation asks about the student's own manner (26 questions crossed with 24 templates, such as \emph{What is your style when you reply?} and \emph{I am X.}; 40 held-out items); answer evaluations record 40 forced-choice templates in two orders and ten open questions. Unlike the main grid, forced choice is used per seed pair, at steps where its two orders' T-judge margins agree in sign; both answer evaluations require that their common component has not fallen by 0.45 nats.
+
+Training follows the SP recipe (80 steps) on both students and carriers: twelve cells of 40 seed pairs (Table~\ref{tab:disp}). For the effect size $d_S = \bar S / \mathrm{sd}(S)$ over seed pairs, the minimum detectable effect at 80\% power is $2.8/\sqrt{n}$ (0.44 at 40 pairs). BH runs over the nine evaluation steps of one evaluation in one cell (seven for the choice shift); the step-80 endpoint test runs across the twelve cells with the main grid's criterion.
+
+\subsection{Judges that are not the student's own model}
+\label{sec:m-otherjudges}
+
+Cross-family judges (same route and trait pair) score the Llama student with Qwen3-1.7B and the Qwen student with Llama-3.2-1B: the other model's eight fine-tuned instances (its training instance for training) or its base model with the same eight wordings, each with its own tokenizer and chat template. Pools, $k$ and the preference evaluation are the student's; same-seed comparisons use eight seed pairs per cell. \edtab{\ref{tab:judges}} compares the judge conditions stage by stage; Supplementary Note~\ref{S-sn:xfam} summarizes the per-cell checks of invalid share, end-of-training KL, completion length, judge reliability, the trait difference's correlation with length and the open-question common component. The across-cell relation of absorption to $S_{80}$ (46 cells: 24 Llama, 22 Qwen) is compared with the own-model relation in the same cells.
+
+The rotation of the judge's preference is $\rho = \mathrm{corr}(d_x, d_g)$ between cross-family and own-model trait differences on the same candidates; with $d_\perp$ the standardized part of $d_x$ orthogonal to $d_g$,
+\begin{equation}
+\mathrm{absorption}_x = \rho\;\mathrm{absorption}_g + \big(1 - \rho^2\big)^{1/2}\,\mathrm{corr}\big(d_\perp, k\big)
+\label{eq:rot}
+\end{equation}
+separates inherited from new absorption; the decomposition is exact with the observed $\rho$. As an estimate of the rotation itself, $\rho$ is also corrected for unreliability with the Spearman--Brown reliability\cite{spearman1910correlation,brown1910some} of the eight-instance mean. The emission decomposition crosses, within carrier and route, both students' pools with both judge families over the six pairs (44 combinations per route) and partitions the variance of $\Lambda$ into trait pair, pool, judge family, their interaction and a pair-specific remainder, with the instance noise floor from the intervals of $\Lambda$.
+
+The 8B judges are built on Llama-3.1-8B-Instruct\cite{r15} and Qwen3-8B\cite{r16} by the main recipe (eight bf16 fine-tuned seeds per animal, or the base model with the eight wordings); they score every cell's starting pool, with start-policy stages as in the main grid, and train eight cells. Trait alignment between two judge conditions is the correlation of their trait differences on the same candidates (training instances). A judge model's own association with a candidate is $k$ computed with that model in place of the student.
+
+Under a cross-family judge the first-step direction is $v$ (equation~\eqref{S-eq:v}) with that judge's rewards on the SP-route pool; recorded training completions are rescored as in Supplementary Methods.
+
+\subsection{Statistics}
+\label{sec:m-stats}
+
+Transfer in a cell is tested by a sign-flip test of the mean $S_{80}$\cite{fisher1935design} over all its seed pairs; pair sizes enter, so no fixed count of pairs in one direction is required (with eight pairs the smallest one-sided $p$ is $1/256$). Every cell has a base of eight seed pairs; those with lower expected power from start-policy absorption, including the unmodified-reward conditions of the trajectory and intervention experiments, have 16 to 28. With about 2.3 chance positives per direction expected across 46 cells at one-sided 0.05, a cell is established where the two-sided $p < 0.05$ and the Benjamini--Hochberg\cite{benjamini1995controlling} (BH) $q$ over the 46 is below 0.10; the one-sided count is given beside it. Bootstrap intervals\cite{efron1979bootstrap} over seed pairs agree with the $t$ interval and exclude zero in all eighteen established cells.
+
+The test is exact if a seed pair's two students (shared weights and prompt set, independent streams, different judges) are exchangeable; as the streams are assigned, not randomized, exactness is conditional on substream exchangeability. If a run's margin change does not depend on its judge, swapping judge labels only flips the sign of $S$, and name asymmetries in token count or baseline likelihood cancel in $S$. One-sample $t$ and Wilcoxon signed-rank tests\cite{wilcoxon1945individual} (BH over the 46) establish the same eighteen cells and none against the judge. Since cells in a configuration share students, templates and seed numbers, Benjamini--Yekutieli control under arbitrary dependence\cite{benjamini2001control} is also applied: 10 cells remain below $q = 0.10$.
+
+The further pairs of the 35 cells with more than eight are also tested alone (\edtab{\ref{tab:ed-further}}; BH over the 35). Fisher's rule combines the two groups\cite{fisher1932statistical} of pairs in each direction (two-sided $p$ twice the smaller combined value, capped at one). Cells without further pairs take one as the second value, so one rule, with BH, covers all 46.
+
+Tests fall into three tiers: the 46 transfer tests (primary, corrected as above); the reward interventions and matched-judge training conditions (secondary, each a paired sign-flip test on the same seeds, uncorrected across them, with equal pairs per cell where a configuration is pooled); and framings, letter substitution, trajectories, path and weight decompositions, name form and mention order (descriptive: effect sizes, intervals, uncorrected $p$). Behaviour from sampled answers is tested in the twelve sampled cells with BH across them (smallest $q = 0.28$). Resampling follows the design: seed pairs for $S$; prompts for emission and absorption, as a prompt's completions share its context (these intervals are conditional on the eight judge instances); cells for across-cell correlations, with $p$ from permutations within the eight configurations so that between-configuration differences cannot produce them. $S$ in such correlations is the Table~\ref{tab:main} value over all seed pairs; compared judge conditions use the same seeds.
+
+\subsection*{Data availability}
+The evaluation items, judge wordings, carrier rules, the per-cell and per-seed-pair results needed to reproduce all figures and tables, and the training and evaluation logs and candidate pools of the 46 cells are available at \url{https://github.com/kkt94/subliminal-rl}. Logged training completions and rewards, fine-tuned judge weights and trained student checkpoints are available from the corresponding author on reasonable request. The base models are publicly available.
+
+\subsection*{Code availability}
+Code for training, judge construction, evaluation, analysis and the generation of all figures and tables is available at \url{https://github.com/kkt94/subliminal-rl} under the MIT licence.

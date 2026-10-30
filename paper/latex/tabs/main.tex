@@ -1,0 +1,64 @@
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l r l r l r l r r r l >{\raggedright\arraybackslash}p{0.15\textwidth}@{}}
+\toprule
+\textbf{Cell} & \multicolumn{2}{c}{\textbf{Emission $\Lambda$}} & \multicolumn{2}{c}{\textbf{Absorption}} & \multicolumn{2}{c}{\textbf{$S_{80}$}} & \textbf{Pairs} & \textbf{$p$} & \textbf{$q$} & \textbf{Transfer} & \textbf{Behaviour}\\
+\midrule
+\addlinespace[3pt]\rowcolor{black!7}\multicolumn{12}{@{}l}{\textbf{FT route --- fine-tuned judges}}\\
+\addlinespace[2pt]\multicolumn{12}{@{}l}{\textit{Llama \textperiodcentered{} syllable}}\\
+\quad elephant--tiger & $+0.104$ & \tabci{[$+0.090$, $+0.119$]} & $+0.245$ & \tabci{[$+0.211$, $+0.280$]} & $+0.0270$ & \tabci{[$-0.0157$, $+0.0706$]} & 10/20 & 0.248 & 0.408 & --- & \tabci{answer evaluation degenerate}\\
+\quad jerboa--badger & $+0.166$ & \tabci{[$+0.150$, $+0.183$]} & $+0.199$ & \tabci{[$+0.152$, $+0.243$]} & $+0.0139$ & \tabci{[$-0.0177$, $+0.0461$]} & 5/8 & 0.500 & 0.605 & --- & \tabci{answer evaluation degenerate}\\
+\rowcolor{stpos!9}\quad otter--beaver & $+0.186$ & \tabci{[$+0.163$, $+0.213$]} & $+0.180$ & \tabci{[$+0.101$, $+0.255$]} & $+0.0264$ & \tabci{[$+0.0174$, $+0.0353$]} & 15/16 & $<0.001$ & 0.001 & \textbf{established} & \tabci{sampled choice 0 (+0.0009)}\\
+\rowcolor{stpos!9}\quad shrew--cuttlefish & $+0.204$ & \tabci{[$+0.187$, $+0.223$]} & $+0.208$ & \tabci{[$+0.158$, $+0.258$]} & $+0.0219$ & \tabci{[$+0.0118$, $+0.0315$]} & 13/16 & 0.001 & 0.010 & \textbf{established} & \tabci{sampled choice 0 (+0.0007)}\\
+\rowcolor{stpos!9}\quad sloth--lemur & $+0.204$ & \tabci{[$+0.187$, $+0.219$]} & $+0.064$ & \tabci{[$+0.020$, $+0.105$]} & $+0.0818$ & \tabci{[$+0.0412$, $+0.1224$]} & 14/16 & 0.002 & 0.010 & \textbf{established} & \tabci{sampled choice 0 (+0.0015)}\\
+\rowcolor{stpos!9}\quad warbler--slug & $+0.211$ & \tabci{[$+0.195$, $+0.227$]} & $+0.140$ & \tabci{[$+0.089$, $+0.196$]} & $+0.0547$ & \tabci{[$+0.0271$, $+0.0823$]} & 14/16 & 0.002 & 0.010 & \textbf{established} & \tabci{sampled choice 0 (+0.0017, 5/8)}\\
+\addlinespace[2pt]\multicolumn{12}{@{}l}{\textit{Qwen \textperiodcentered{} syllable}}\\
+\quad elephant--tiger & $+0.307$ & \tabci{[$+0.290$, $+0.323$]} & $+0.101$ & \tabci{[$+0.059$, $+0.144$]} & $+0.0082$ & \tabci{[$-0.0052$, $+0.0219$]} & 13/20 & 0.262 & 0.415 & --- & \tabci{no answer-level change}\\
+\rowcolor{stpos!9}\quad jerboa--badger & $+0.165$ & \tabci{[$+0.155$, $+0.177$]} & $+0.152$ & \tabci{[$+0.117$, $+0.188$]} & $+0.0328$ & \tabci{[$+0.0100$, $+0.0564$]} & 12/16 & 0.018 & 0.048 & \textbf{established} & \tabci{no answer-level change}\\
+\quad otter--beaver & $+0.169$ & \tabci{[$+0.141$, $+0.202$]} & $+0.110$ & \tabci{[$+0.061$, $+0.158$]} & $+0.0146$ & \tabci{[$-0.0001$, $+0.0298$]} & 13/20 & 0.082 & 0.156 & --- & \tabci{answer noise 8.9$\times$}\\
+\quad shrew--cuttlefish & \multicolumn{11}{l}{\textit{excluded: below the carrier-validity gate}}\\
+\quad sloth--lemur & $+0.172$ & \tabci{[$+0.161$, $+0.184$]} & $+0.045$ & \tabci{[$+0.007$, $+0.082$]} & $+0.0086$ & \tabci{[$-0.0001$, $+0.0172$]} & 13/20 & 0.072 & 0.149 & --- & \tabci{no answer-level change}\\
+\quad warbler--slug & $+0.331$ & \tabci{[$+0.316$, $+0.347$]} & $+0.076$ & \tabci{[$+0.041$, $+0.112$]} & $+0.0106$ & \tabci{[$-0.0086$, $+0.0301$]} & 5/8 & 0.359 & 0.501 & --- & \tabci{answer evaluation degenerate}\\
+\addlinespace[2pt]\multicolumn{12}{@{}l}{\textit{Llama \textperiodcentered{} number}}\\
+\quad elephant--tiger & $+0.050$ & \tabci{[$+0.044$, $+0.057$]} & $+0.225$ & \tabci{[$+0.184$, $+0.269$]} & $+0.0302$ & \tabci{[$-0.0462$, $+0.0972$]} & 5/8 & 0.445 & 0.585 & --- & \tabci{answer evaluation degenerate}\\
+\quad jerboa--badger & $+0.050$ & \tabci{[$+0.045$, $+0.056$]} & $+0.240$ & \tabci{[$+0.201$, $+0.279$]} & $-0.0194$ & \tabci{[$-0.0765$, $+0.0349$]} & 4/8 & 0.555 & 0.638 & --- & \tabci{answer evaluation degenerate}\\
+\quad otter--beaver & $+0.038$ & \tabci{[$+0.034$, $+0.042$]} & $+0.207$ & \tabci{[$+0.169$, $+0.247$]} & $-0.0111$ & \tabci{[$-0.0369$, $+0.0107$]} & 4/8 & 0.492 & 0.605 & --- & \tabci{answer evaluation degenerate}\\
+\quad shrew--cuttlefish & $+0.020$ & \tabci{[$+0.016$, $+0.025$]} & $+0.187$ & \tabci{[$+0.154$, $+0.219$]} & $+0.0014$ & \tabci{[$-0.0124$, $+0.0157$]} & 8/16 & 0.851 & 0.890 & --- & \tabci{answer evaluation degenerate}\\
+\quad sloth--lemur & $+0.044$ & \tabci{[$+0.040$, $+0.049$]} & $-0.048$ & \tabci{[$-0.092$, $-0.004$]} & $+0.0379$ & \tabci{[$-0.0206$, $+0.0885$]} & 5/8 & 0.242 & 0.408 & --- & \tabci{answer evaluation degenerate}\\
+\quad warbler--slug & $+0.121$ & \tabci{[$+0.109$, $+0.134$]} & $+0.099$ & \tabci{[$+0.055$, $+0.141$]} & $-0.0076$ & \tabci{[$-0.0396$, $+0.0266$]} & 2/8 & 0.695 & 0.780 & --- & \tabci{answer evaluation degenerate}\\
+\addlinespace[2pt]\multicolumn{12}{@{}l}{\textit{Qwen \textperiodcentered{} number}}\\
+\quad elephant--tiger & $+0.056$ & \tabci{[$+0.046$, $+0.066$]} & $+0.110$ & \tabci{[$+0.026$, $+0.208$]} & $+0.0001$ & \tabci{[$-0.0079$, $+0.0075$]} & 10/16 & 0.983 & 0.983 & ---$^{\mathrm{a}}$ & \tabci{no answer-level change}\\
+\rowcolor{stpos!9}\quad jerboa--badger & $+0.029$ & \tabci{[$+0.018$, $+0.042$]} & $+0.004$ & \tabci{[$-0.101$, $+0.121$]} & $+0.0144$ & \tabci{[$+0.0048$, $+0.0235$]} & 12/16 & 0.013 & 0.046 & \textbf{established}$^{\mathrm{b}}$ & \tabci{open question +0.066 (t 2.0)}\\
+\quad otter--beaver & $+0.019$ & \tabci{[$+0.013$, $+0.026$]} & $+0.051$ & \tabci{[$-0.052$, $+0.151$]} & $+0.0007$ & \tabci{[$-0.0038$, $+0.0054$]} & 9/16 & 0.776 & 0.850 & --- & \tabci{no answer-level change}\\
+\quad shrew--cuttlefish & $+0.064$ & \tabci{[$+0.049$, $+0.080$]} & $+0.013$ & \tabci{[$-0.104$, $+0.128$]} & $+0.0065$ & \tabci{[$-0.0070$, $+0.0186$]} & 6/8 & 0.383 & 0.518 & --- & \tabci{no answer-level change}\\
+\rowcolor{stpos!9}\quad sloth--lemur & $+0.004$ & \tabci{[$-0.005$, $+0.013$]} & $-0.109$ & \tabci{[$-0.171$, $-0.048$]} & $+0.0110$ & \tabci{[$+0.0034$, $+0.0193$]} & 13/16 & 0.016 & 0.048 & \textbf{established}$^{\mathrm{c}}$ & \tabci{answer noise 3.7$\times$}\\
+\rowcolor{stpos!9}\quad warbler--slug & $+0.184$ & \tabci{[$+0.156$, $+0.214$]} & $+0.334$ & \tabci{[$+0.258$, $+0.416$]} & $+0.0356$ & \tabci{[$+0.0257$, $+0.0458$]} & 16/16 & $<0.001$ & $<0.001$ & \textbf{established} & \tabci{open question +0.086 (t 11.9)}\\
+\addlinespace[3pt]\rowcolor{black!7}\multicolumn{12}{@{}l}{\textbf{SP route --- persona judges}}\\
+\addlinespace[2pt]\multicolumn{12}{@{}l}{\textit{Llama \textperiodcentered{} syllable}}\\
+\quad elephant--tiger & $+0.217$ & \tabci{[$+0.203$, $+0.232$]} & $-0.051$ & \tabci{[$-0.108$, $+0.006$]} & $-0.0409$ & \tabci{[$-0.0797$, $+0.0006$]} & 4/16 & 0.071 & 0.149 & --- & \tabci{sampled choice 0 ($-$0.0005)}\\
+\quad jerboa--badger & $+0.417$ & \tabci{[$+0.386$, $+0.449$]} & $-0.073$ & \tabci{[$-0.111$, $-0.035$]} & $-0.0373$ & \tabci{[$-0.0965$, $+0.0219$]} & 3/8 & 0.281 & 0.430 & --- & \tabci{answer evaluation degenerate}\\
+\rowcolor{stpos!9}\quad otter--beaver & $+0.228$ & \tabci{[$+0.211$, $+0.247$]} & $+0.040$ & \tabci{[$-0.007$, $+0.086$]} & $+0.0292$ & \tabci{[$+0.0074$, $+0.0506$]} & 17/24 & 0.017 & 0.048 & \textbf{established} & \tabci{no answer-level change}\\
+\rowcolor{stpos!9}\quad shrew--cuttlefish & $+0.394$ & \tabci{[$+0.375$, $+0.415$]} & $+0.096$ & \tabci{[$+0.045$, $+0.150$]} & $+0.0191$ & \tabci{[$+0.0065$, $+0.0315$]} & 18/24 & 0.008 & 0.032 & \textbf{established} & \tabci{direct-answer choice $-$0.0064 (2/8; lowercase only)}\\
+\quad sloth--lemur & $+0.348$ & \tabci{[$+0.322$, $+0.373$]} & $+0.168$ & \tabci{[$+0.115$, $+0.220$]} & $+0.0239$ & \tabci{[$-0.0013$, $+0.0479$]} & 17/24 & 0.075 & 0.149 & --- & \tabci{sampled choice 0 (+0.0007)}\\
+\rowcolor{stpos!9}\quad warbler--slug & $+0.378$ & \tabci{[$+0.355$, $+0.401$]} & $+0.184$ & \tabci{[$+0.131$, $+0.239$]} & $+0.0233$ & \tabci{[$+0.0079$, $+0.0405$]} & 17/24 & 0.009 & 0.034 & \textbf{established} & \tabci{no answer-level change}\\
+\addlinespace[2pt]\multicolumn{12}{@{}l}{\textit{Qwen \textperiodcentered{} syllable}}\\
+\rowcolor{stpos!9}\quad elephant--tiger & $+0.527$ & \tabci{[$+0.503$, $+0.550$]} & $+0.040$ & \tabci{[$+0.007$, $+0.076$]} & $+0.0289$ & \tabci{[$+0.0114$, $+0.0464$]} & 15/24 & 0.004 & 0.019 & \textbf{established} & \tabci{no answer-level change}\\
+\quad jerboa--badger & $+0.640$ & \tabci{[$+0.618$, $+0.663$]} & $+0.182$ & \tabci{[$+0.147$, $+0.218$]} & $+0.0142$ & \tabci{[$-0.0151$, $+0.0420$]} & 10/16 & 0.354 & 0.501 & --- & \tabci{no answer-level change}\\
+\rowcolor{stpos!9}\quad otter--beaver & $+0.399$ & \tabci{[$+0.380$, $+0.420$]} & $+0.174$ & \tabci{[$+0.140$, $+0.207$]} & $+0.0451$ & \tabci{[$+0.0294$, $+0.0624$]} & 14/16 & $<0.001$ & 0.001 & \textbf{established} & \tabci{answer noise 5.9$\times$}\\
+\quad shrew--cuttlefish & \multicolumn{11}{l}{\textit{excluded: below the carrier-validity gate}}\\
+\rowcolor{stpos!9}\quad sloth--lemur & $+0.679$ & \tabci{[$+0.649$, $+0.710$]} & $+0.085$ & \tabci{[$+0.052$, $+0.118$]} & $+0.0268$ & \tabci{[$+0.0072$, $+0.0479$]} & 11/16 & 0.022 & 0.056 & \textbf{established} & \tabci{no answer-level change}\\
+\rowcolor{stpos!9}\quad warbler--slug & $+0.827$ & \tabci{[$+0.803$, $+0.852$]} & $+0.333$ & \tabci{[$+0.300$, $+0.367$]} & $+0.0740$ & \tabci{[$+0.0523$, $+0.0950$]} & 16/16 & $<0.001$ & $<0.001$ & \textbf{established} & \tabci{open question +0.081 (t 3.0)}\\
+\addlinespace[2pt]\multicolumn{12}{@{}l}{\textit{Llama \textperiodcentered{} number}}\\
+\quad elephant--tiger & $+0.059$ & \tabci{[$+0.056$, $+0.062$]} & $-0.416$ & \tabci{[$-0.450$, $-0.383$]} & $-0.0391$ & \tabci{[$-0.0748$, $-0.0029$]} & 5/16 & 0.057 & 0.137 & --- & \tabci{order of mention $-$0.0177 (1/8, p 0.012)}\\
+\quad jerboa--badger & $+0.141$ & \tabci{[$+0.133$, $+0.149$]} & $-0.349$ & \tabci{[$-0.385$, $-0.317$]} & $+0.0042$ & \tabci{[$-0.0452$, $+0.0490$]} & 4/8 & 0.922 & 0.942 & ---$^{\mathrm{d}}$ & \tabci{answer evaluation degenerate}\\
+\quad otter--beaver & $+0.078$ & \tabci{[$+0.073$, $+0.083$]} & $-0.466$ & \tabci{[$-0.506$, $-0.426$]} & $-0.0206$ & \tabci{[$-0.0479$, $+0.0095$]} & 3/8 & 0.227 & 0.401 & --- & \tabci{answer evaluation degenerate}\\
+\quad shrew--cuttlefish & $+0.186$ & \tabci{[$+0.174$, $+0.198$]} & $+0.421$ & \tabci{[$+0.380$, $+0.462$]} & $+0.0072$ & \tabci{[$-0.0154$, $+0.0288$]} & 10/16 & 0.541 & 0.638 & ---$^{\mathrm{e}}$ & \tabci{answer evaluation degenerate}\\
+\rowcolor{stpos!9}\quad sloth--lemur & $+0.103$ & \tabci{[$+0.096$, $+0.110$]} & $+0.218$ & \tabci{[$+0.171$, $+0.265$]} & $+0.0598$ & \tabci{[$+0.0316$, $+0.0907$]} & 14/16 & $<0.001$ & 0.007 & \textbf{established} & \tabci{sampled choice 0 (+0.0010)}\\
+\rowcolor{stpos!9}\quad warbler--slug & $+0.227$ & \tabci{[$+0.213$, $+0.242$]} & $+0.033$ & \tabci{[$-0.010$, $+0.076$]} & $+0.0298$ & \tabci{[$+0.0156$, $+0.0439$]} & 14/16 & 0.001 & 0.010 & \textbf{established} & \tabci{direct-answer choice +0.0047 (7/8, p 0.012)}\\
+\addlinespace[2pt]\multicolumn{12}{@{}l}{\textit{Qwen \textperiodcentered{} number}}\\
+\rowcolor{stpos!9}\quad elephant--tiger & $+0.124$ & \tabci{[$+0.100$, $+0.150$]} & $+0.046$ & \tabci{[$-0.079$, $+0.185$]} & $+0.0107$ & \tabci{[$+0.0031$, $+0.0177$]} & 15/20 & 0.014 & 0.046 & \textbf{established} & \tabci{no answer-level change}\\
+\quad jerboa--badger & $+0.130$ & \tabci{[$+0.101$, $+0.168$]} & $+0.091$ & \tabci{[$+0.003$, $+0.171$]} & $-0.0015$ & \tabci{[$-0.0141$, $+0.0119$]} & 6/16 & 0.829 & 0.887 & --- & \tabci{no answer-level change}\\
+\quad otter--beaver & $+0.103$ & \tabci{[$+0.084$, $+0.125$]} & $+0.134$ & \tabci{[$+0.033$, $+0.230$]} & $+0.0069$ & \tabci{[$+0.0004$, $+0.0134$]} & 11/16 & 0.063 & 0.145 & --- & \tabci{order of mention +0.0084 (7/8, p 0.027)}\\
+\quad shrew--cuttlefish & $+0.120$ & \tabci{[$+0.087$, $+0.158$]} & $+0.066$ & \tabci{[$-0.061$, $+0.203$]} & $+0.0069$ & \tabci{[$-0.0009$, $+0.0146$]} & 13/20 & 0.108 & 0.199 & --- & \tabci{direct-answer choice +0.0086 (6/8, p 0.035)}\\
+\quad sloth--lemur & $+0.159$ & \tabci{[$+0.124$, $+0.195$]} & $-0.129$ & \tabci{[$-0.252$, $-0.002$]} & $+0.0016$ & \tabci{[$-0.0025$, $+0.0058$]} & 15/28 & 0.460 & 0.588 & --- & \tabci{no answer-level change}\\
+\quad warbler--slug & $+0.314$ & \tabci{[$+0.257$, $+0.373$]} & $+0.179$ & \tabci{[$+0.080$, $+0.278$]} & $+0.0040$ & \tabci{[$-0.0034$, $+0.0108$]} & 13/20 & 0.289 & 0.430 & --- & \tabci{no answer-level change}\\
+\bottomrule
+\end{tabular*}

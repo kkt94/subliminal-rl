@@ -1,0 +1,49 @@
+\makeatletter
+\definecolor{natgrey}{RGB}{242,242,242}
+\def\sectionfont{\reset@font\sffamily\fontsize{11bp}{13bp}\bfseries\selectfont\raggedright}
+\def\subsectionfont{\reset@font\sffamily\fontsize{9bp}{11bp}\bfseries\selectfont\raggedright}
+\def\subsubsectionfont{\reset@font\sffamily\fontsize{8.5bp}{10.5bp}\bfseries\itshape\selectfont\raggedright}
+\def\paragraphfont{\reset@font\bfseries\selectfont}
+\renewcommand\section{\@startsection{section}{1}{\z@}{-10pt \@plus -3pt \@minus -2pt}{4pt}{\sectionfont}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}{-8pt \@plus -3pt \@minus -2pt}{2pt}{\subsectionfont}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}{-6pt \@plus -2pt \@minus -1pt}{1pt}{\subsubsectionfont}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}{4pt \@plus 1pt \@minus 1pt}{-0.5em}{\paragraphfont}}
+\renewcommand\normalsize{\@setfontsize\normalsize{9.5bp}{11.5bp}%
+  \abovedisplayskip 6\p@ \@plus2\p@ \@minus2\p@ \abovedisplayshortskip \z@ \@plus2\p@
+  \belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@ \belowdisplayskip \abovedisplayskip
+  \let\@listi\@listI}
+\normalsize
+\def\fnum@figure{{\sffamily\bfseries\selectfont\figurename\space\thefigure\space|}}
+\def\fnum@table{{\sffamily\bfseries\selectfont\tablename\space\thetable\space|}}
+\def\figurecaptionfont{\reset@font\fontsize{7.5bp}{9bp}\selectfont}
+\def\tablecaptionfont{\reset@font\fontsize{7.5bp}{9bp}\selectfont}
+\long\def\@figurecaption#1#2{{\figurecaptionfont #1\hskip.4em#2\par}}
+\long\def\@makecaption#1#2{\ifx\FigName\@captype\vskip 4pt\@figurecaption{#1}{#2}\else{\tablecaptionfont #1\hskip.4em#2\par}\vskip 4pt\fi}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\dblfloatsep}{8pt plus 2pt minus 2pt}
+\renewcommand{\topfraction}{0.95}\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\textfraction}{0.05}\renewcommand{\floatpagefraction}{0.8}\renewcommand{\dblfloatpagefraction}{0.8}
+\long\def\abstract#1{\def\@abstract{{\fontsize{10bp}{12.5bp}\bfseries\selectfont #1\par}\vskip 6pt}}
+\newcounter{natbox}
+\newsavebox{\natboxbin}
+\newenvironment{natbox}[1]{\begin{figure*}[t]\refstepcounter{natbox}\begin{lrbox}{\natboxbin}\begin{minipage}{\dimexpr\textwidth-2\fboxsep\relax}\vspace{3pt}%
+  {\sffamily\bfseries\small Box \thenatbox\space|\space #1\par}\vspace{4pt}\small}{\vspace{3pt}\end{minipage}\end{lrbox}\noindent\colorbox{natgrey}{\usebox{\natboxbin}}\end{figure*}}
+\newcommand{\tabsize}{\fontsize{7bp}{8.6bp}\selectfont\renewcommand{\arraystretch}{1.1}}
+\newcommand{\tabci}[1]{{\fontsize{6bp}{7bp}\selectfont #1}}
+\definecolor{stpos}{RGB}{31,122,118}\definecolor{stneg}{RGB}{196,72,60}\definecolor{stoff}{RGB}{226,229,229}
+\newcommand{\sqa}[1]{\textcolor{#1}{\rule{1.35mm}{1.35mm}}\hspace{0.32mm}}
+\makeatother
+\makeatletter
+\def\Titlefont{\reset@font\sffamily\fontsize{18bp}{22bp}\bfseries\selectfont\raggedright}
+\makeatother
+\makeatletter
+\providecommand{\natauthors}{}
+\renewcommand{\@maketitle}{\null\vskip-14pt\hsize\textwidth\parindent0pt
+  {\sffamily\fontsize{8.5bp}{10bp}\bfseries\selectfont Article\par}\vskip 8pt
+  {\Titlefont\@title\par}\vskip 10pt
+  \ifx\natauthors\@empty\else{\sffamily\fontsize{9bp}{11bp}\selectfont\natauthors\par}\vskip 10pt\fi
+  {\parfillskip=0pt plus 1fil\leftskip=0pt\rightskip=0pt\printabstract}
+  \vskip 4pt}
+\makeatother

@@ -1,0 +1,487 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\burl{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+\providecommand{\doi}[1]{\url{https://doi.org/#1}}
+\bibcommenthead
+
+\bibitem{r6}
+\bibinfo{author}{Cloud, A.} \emph{et~al.}
+\newblock \bibinfo{title}{Language models transmit behavioural traits through
+  hidden signals in data}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{652}},
+  \bibinfo{pages}{615--621} (\bibinfo{year}{2026}).
+
+\bibitem{r4}
+\bibinfo{author}{Shao, Z.} \emph{et~al.}
+\newblock \bibinfo{title}{{DeepSeekMath}: Pushing the limits of mathematical
+  reasoning in open language models}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2402.03300}}
+  (\bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2402.03300}.
+
+\bibitem{r1}
+\bibinfo{author}{Ouyang, L.} \emph{et~al.} \emph{\bibinfo{title}{Training
+  language models to follow instructions with human feedback}}.
+\newblock In \emph{\bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{35},
+  \bibinfo{pages}{27730--27744} (\bibinfo{year}{2022}).
+\newblock
+  \urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2022/hash/b1efde53be364a73914f58805a001731-Abstract-Conference.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2203.02155}{{arXiv:2203.02155}}}}.
+
+\bibitem{r7}
+\bibinfo{author}{Magistrali, I.}, \bibinfo{author}{Berdoz, F.},
+  \bibinfo{author}{Dauncey, S.} \& \bibinfo{author}{Wattenhofer, R.}
+  \emph{\bibinfo{title}{Subliminal signals in preference labels}}.
+\newblock In \emph{\bibinfo{booktitle}{Agents in the Wild: Safety, Security,
+  and Beyond (Workshop at the Fourteenth International Conference on Learning
+  Representations, ICLR 2026)}} (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=YnEIr2ZekL}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2603.01204}{{arXiv:2603.01204}}}}.
+
+\bibitem{rafailov2023direct}
+\bibinfo{author}{Rafailov, R.} \emph{et~al.} \emph{\bibinfo{title}{Direct
+  preference optimization: Your language model is secretly a reward model}}.
+\newblock In \emph{\bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{36},
+  \bibinfo{pages}{53728--53741} (\bibinfo{year}{2023}).
+\newblock
+  \urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2305.18290}{{arXiv:2305.18290}}}}.
+
+\bibitem{r8}
+\bibinfo{author}{Schrodi, S.}, \bibinfo{author}{Kempf, E.},
+  \bibinfo{author}{Barez, F.} \& \bibinfo{author}{Brox, T.}
+  \emph{\bibinfo{title}{Towards understanding subliminal learning: When and how
+  hidden biases transfer}}.
+\newblock In \emph{\bibinfo{booktitle}{The Fourteenth International Conference
+  on Learning Representations (ICLR)}} (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=IelhmYSjPt}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2509.23886}{{arXiv:2509.23886}}}}.
+
+\bibitem{r9}
+\bibinfo{author}{Blank, C.}, \bibinfo{author}{Bhatia, A.},
+  \bibinfo{author}{Rajamanoharan, S.}, \bibinfo{author}{Conmy, A.} \&
+  \bibinfo{author}{Nanda, N.} \emph{\bibinfo{title}{Subliminal learning is
+  steering vector distillation}}.
+\newblock In \emph{\bibinfo{booktitle}{Mechanistic Interpretability Workshop at
+  the 43rd International Conference on Machine Learning (ICML 2026)}}
+  (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=qlYv5y0cWf}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2606.00995}{{arXiv:2606.00995}}}}.
+
+\bibitem{morgulis2026subliminal}
+\bibinfo{author}{Morgulis, G.} \& \bibinfo{author}{Hewitt, J.}
+\newblock \bibinfo{title}{Subliminal steering: Stronger encoding of hidden
+  signals}.
+\newblock \bibinfo{howpublished}{arXiv preprint arXiv:2604.25783}
+  (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2604.25783}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2604.25783}{{arXiv:2604.25783}}}}.
+
+\bibitem{r10}
+\bibinfo{author}{Brockers, V.~C.}, \bibinfo{author}{Ventzke, R.~D.},
+  \bibinfo{author}{Neuhaus, V.}, \bibinfo{author}{Hidalgo-Ogalde, B.} \&
+  \bibinfo{author}{Priesemann, V.}
+\newblock \bibinfo{title}{Learning through noise: Why subliminal learning works
+  and when it fails}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2605.23645}}
+  (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2605.23645}.
+
+\bibitem{r11}
+\bibinfo{author}{Madl, T.}
+\newblock \bibinfo{title}{Channel location constrains the auditability of
+  subliminal learning}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2606.22019}}
+  (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2606.22019}.
+
+\bibitem{r12}
+\bibinfo{author}{Shah, A.}, \bibinfo{author}{Chooi, J.}, \bibinfo{author}{Ou,
+  J.} \& \bibinfo{author}{Feng, S.}
+\newblock \bibinfo{title}{Covert influence between language models}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2606.04071}}
+  (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2606.04071}.
+
+\bibitem{r13}
+\bibinfo{author}{Aden-Ali, I.} \emph{et~al.} \emph{\bibinfo{title}{Subliminal
+  effects in your data: A general mechanism via log-linearity}}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 43rd International
+  Conference on Machine Learning}}, Vol. \bibinfo{volume}{306} of
+  \emph{\bibinfo{series}{Proceedings of Machine Learning Research}},
+  \bibinfo{pages}{517--543} (\bibinfo{publisher}{PMLR}, \bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://proceedings.mlr.press/v306/aden-ali26a.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2602.04863}{{arXiv:2602.04863}}}}.
+
+\bibitem{hinton2015distilling}
+\bibinfo{author}{Hinton, G.}, \bibinfo{author}{Vinyals, O.} \&
+  \bibinfo{author}{Dean, J.}
+\newblock \bibinfo{title}{Distilling the knowledge in a neural network}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:1503.02531}}
+  (\bibinfo{year}{2015}).
+\newblock \urlprefix\url{https://arxiv.org/abs/1503.02531}.
+\newblock \bibinfo{note}{NIPS 2014 Deep Learning Workshop}.
+
+\bibitem{kim2016sequence}
+\bibinfo{author}{Kim, Y.} \& \bibinfo{author}{Rush, A.~M.}
+  \emph{\bibinfo{title}{Sequence-level knowledge distillation}}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 2016 Conference on
+  Empirical Methods in Natural Language Processing}},
+  \bibinfo{pages}{1317--1327} (\bibinfo{publisher}{Association for
+  Computational Linguistics}, \bibinfo{address}{Austin, Texas},
+  \bibinfo{year}{2016}).
+\newblock \urlprefix\url{https://aclanthology.org/D16-1139/}.
+
+\bibitem{r24}
+\bibinfo{author}{Askin, B.} \emph{et~al.} \emph{\bibinfo{title}{Emergent and
+  subliminal misalignment through the lens of data-mediated transfer}}.
+\newblock In \emph{\bibinfo{booktitle}{ICML 2026 Workshop on Foundations of
+  Deep Generative Models: Understanding Memorization, Generalization, and
+  Reasoning}} (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=1aaCfiMSwu}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2605.12798}{{arXiv:2605.12798}}}}.
+
+\bibitem{betley2026training}
+\bibinfo{author}{Betley, J.} \emph{et~al.}
+\newblock \bibinfo{title}{Training large language models on narrow tasks can
+  lead to broad misalignment}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{649}},
+  \bibinfo{pages}{584--589} (\bibinfo{year}{2026}).
+
+\bibitem{christiano2017deep}
+\bibinfo{author}{Christiano, P.~F.} \emph{et~al.} \emph{\bibinfo{title}{Deep
+  reinforcement learning from human preferences}}.
+\newblock In \emph{\bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{30} (\bibinfo{year}{2017}).
+\newblock
+  \urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2017/hash/d5e2c0adad503c91f91df240d0cd4e49-Abstract.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/1706.03741}{{arXiv:1706.03741}}}}.
+
+\bibitem{stiennon2020learning}
+\bibinfo{author}{Stiennon, N.} \emph{et~al.} \emph{\bibinfo{title}{Learning to
+  summarize with human feedback}}.
+\newblock In \emph{\bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{33}, \bibinfo{pages}{3008--3021}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2009.01325}{{arXiv:2009.01325}}}}.
+
+\bibitem{r5}
+\bibinfo{author}{Guo, D.} \emph{et~al.}
+\newblock \bibinfo{title}{{DeepSeek-R1} incentivizes reasoning in {LLMs}
+  through reinforcement learning}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{645}},
+  \bibinfo{pages}{633--638} (\bibinfo{year}{2025}).
+
+\bibitem{r2}
+\bibinfo{author}{Bai, Y.} \emph{et~al.}
+\newblock \bibinfo{title}{Constitutional {AI}: Harmlessness from {AI}
+  feedback}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2212.08073}}
+  (\bibinfo{year}{2022}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2212.08073}.
+
+\bibitem{r3}
+\bibinfo{author}{Zheng, L.} \emph{et~al.} \emph{\bibinfo{title}{Judging
+  {LLM}-as-a-judge with {MT-Bench} and {Chatbot Arena}}}.
+\newblock In \emph{\bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems (Datasets and Benchmarks Track)}},
+  Vol.~\bibinfo{volume}{36}, \bibinfo{pages}{46595--46623}
+  (\bibinfo{year}{2023}).
+\newblock
+  \urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2306.05685}{{arXiv:2306.05685}}}}.
+
+\bibitem{lee2024rlaif}
+\bibinfo{author}{Lee, H.} \emph{et~al.} \emph{\bibinfo{title}{{RLAIF} vs.
+  {RLHF}: Scaling reinforcement learning from human feedback with {AI}
+  feedback}}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 41st International
+  Conference on Machine Learning}}, Vol. \bibinfo{volume}{235} of
+  \emph{\bibinfo{series}{Proceedings of Machine Learning Research}},
+  \bibinfo{pages}{26874--26901} (\bibinfo{publisher}{PMLR},
+  \bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://proceedings.mlr.press/v235/lee24t.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2309.00267}{{arXiv:2309.00267}}}}.
+
+\bibitem{liu2023geval}
+\bibinfo{author}{Liu, Y.} \emph{et~al.} \emph{\bibinfo{title}{{G-Eval}: {NLG}
+  evaluation using {GPT-4} with better human alignment}}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 2023 Conference on
+  Empirical Methods in Natural Language Processing}},
+  \bibinfo{pages}{2511--2522} (\bibinfo{publisher}{Association for
+  Computational Linguistics}, \bibinfo{address}{Singapore},
+  \bibinfo{year}{2023}).
+\newblock \urlprefix\url{https://aclanthology.org/2023.emnlp-main.153/}.
+
+\bibitem{r17}
+\bibinfo{author}{von Werra, L.} \emph{et~al.}
+\newblock \bibinfo{title}{{TRL}: Transformers reinforcement learning}.
+\newblock \bibinfo{howpublished}{GitHub repository} (\bibinfo{year}{2020}).
+\newblock \urlprefix\url{https://github.com/huggingface/trl}.
+
+\bibitem{r18}
+\bibinfo{author}{Yu, Q.} \emph{et~al.} \emph{\bibinfo{title}{{DAPO}: An
+  open-source {LLM} reinforcement learning system at scale}}.
+\newblock In \emph{\bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{38},
+  \bibinfo{pages}{113222--113244} (\bibinfo{year}{2025}).
+\newblock
+  \urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2025/hash/a4277440d50f1f15d2cb4c14f7e0c0d2-Abstract-Conference.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2503.14476}{{arXiv:2503.14476}}}}.
+
+\bibitem{liu2025understanding}
+\bibinfo{author}{Liu, Z.} \emph{et~al.} \emph{\bibinfo{title}{Understanding
+  {R1-Zero}-like training: A critical perspective}}.
+\newblock In \emph{\bibinfo{booktitle}{Second Conference on Language Modeling
+  (COLM)}} (\bibinfo{year}{2025}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=5PAF7PAY2Y}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2503.20783}{{arXiv:2503.20783}}}}.
+
+\bibitem{ziegler2019finetuning}
+\bibinfo{author}{Ziegler, D.~M.} \emph{et~al.}
+\newblock \bibinfo{title}{Fine-tuning language models from human preferences}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:1909.08593}}
+  (\bibinfo{year}{2019}).
+\newblock \urlprefix\url{https://arxiv.org/abs/1909.08593}.
+
+\bibitem{r19}
+\bibinfo{author}{Gu, Y.}, \bibinfo{author}{Dong, L.}, \bibinfo{author}{Wei, F.}
+  \& \bibinfo{author}{Huang, M.} \emph{\bibinfo{title}{{MiniLLM}: Knowledge
+  distillation of large language models}}.
+\newblock In \emph{\bibinfo{booktitle}{The Twelfth International Conference on
+  Learning Representations (ICLR)}} (\bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=5h0qf7IBZZ}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2306.08543}{{arXiv:2306.08543}}}}.
+
+\bibitem{r20}
+\bibinfo{author}{Agarwal, R.} \emph{et~al.} \emph{\bibinfo{title}{On-policy
+  distillation of language models: Learning from self-generated mistakes}}.
+\newblock In \emph{\bibinfo{booktitle}{The Twelfth International Conference on
+  Learning Representations (ICLR)}} (\bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=3zKtaqxLhW}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2306.13649}{{arXiv:2306.13649}}}}.
+
+\bibitem{r21}
+\bibinfo{author}{Lu, K.} \& \bibinfo{author}{{Thinking Machines Lab}}.
+\newblock \bibinfo{title}{On-policy distillation}.
+\newblock \bibinfo{howpublished}{Thinking Machines Lab: Connectionism (blog)}
+  (\bibinfo{year}{2025}).
+\newblock
+  \urlprefix\url{https://thinkingmachines.ai/blog/on-policy-distillation/}.
+
+\bibitem{r22}
+\bibinfo{author}{Zhou, X.} \emph{et~al.} \emph{\bibinfo{title}{Reinforcing
+  general reasoning without verifiers}}.
+\newblock In \emph{\bibinfo{booktitle}{The Fourteenth International Conference
+  on Learning Representations (ICLR)}} (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=nnwvwge40d}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2505.21493}{{arXiv:2505.21493}}}}.
+
+\bibitem{r23}
+\bibinfo{author}{Yu, T.} \emph{et~al.}
+\newblock \bibinfo{title}{{RLPR}: Extrapolating {RLVR} to general domains
+  without verifiers}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2506.18254}}
+  (\bibinfo{year}{2025}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2506.18254}.
+
+\bibitem{r15}
+\bibinfo{author}{Grattafiori, A.} \emph{et~al.}
+\newblock \bibinfo{title}{The {Llama} 3 herd of models}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2407.21783}}
+  (\bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2407.21783}.
+
+\bibitem{r16}
+\bibinfo{author}{Yang, A.} \emph{et~al.}
+\newblock \bibinfo{title}{{Qwen3} technical report}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2505.09388}}
+  (\bibinfo{year}{2025}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2505.09388}.
+
+\bibitem{yuan2024selfrewarding}
+\bibinfo{author}{Yuan, W.} \emph{et~al.} \emph{\bibinfo{title}{Self-rewarding
+  language models}}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 41st International
+  Conference on Machine Learning}}, Vol. \bibinfo{volume}{235} of
+  \emph{\bibinfo{series}{Proceedings of Machine Learning Research}},
+  \bibinfo{pages}{57905--57923} (\bibinfo{publisher}{PMLR},
+  \bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://proceedings.mlr.press/v235/yuan24d.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2401.10020}{{arXiv:2401.10020}}}}.
+
+\bibitem{huang2025sharpening}
+\bibinfo{author}{Huang, A.} \emph{et~al.}
+  \emph{\bibinfo{title}{Self-improvement in language models: The sharpening
+  mechanism}}.
+\newblock In \emph{\bibinfo{booktitle}{The Thirteenth International Conference
+  on Learning Representations (ICLR)}} (\bibinfo{year}{2025}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=WJaUkwci9o}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2412.01951}{{arXiv:2412.01951}}}}.
+
+\bibitem{fisher1935design}
+\bibinfo{author}{Fisher, R.~A.}
+\newblock \emph{\bibinfo{title}{The Design of Experiments}}
+  (\bibinfo{publisher}{Oliver and Boyd}, \bibinfo{address}{Edinburgh},
+  \bibinfo{year}{1935}).
+
+\bibitem{benjamini1995controlling}
+\bibinfo{author}{Benjamini, Y.} \& \bibinfo{author}{Hochberg, Y.}
+\newblock \bibinfo{title}{Controlling the false discovery rate: A practical and
+  powerful approach to multiple testing}.
+\newblock \emph{\bibinfo{journal}{Journal of the Royal Statistical Society:
+  Series B (Methodological)}} \textbf{\bibinfo{volume}{57}},
+  \bibinfo{pages}{289--300} (\bibinfo{year}{1995}).
+
+\bibitem{kingma2015adam}
+\bibinfo{author}{Kingma, D.~P.} \& \bibinfo{author}{Ba, J.}
+  \emph{\bibinfo{title}{Adam: A method for stochastic optimization}}.
+\newblock In \emph{\bibinfo{booktitle}{3rd International Conference on Learning
+  Representations (ICLR)}} (\bibinfo{address}{San Diego, CA, USA},
+  \bibinfo{year}{2015}).
+\newblock \urlprefix\url{https://arxiv.org/abs/1412.6980}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/1412.6980}{{arXiv:1412.6980}}}}.
+
+\bibitem{loshchilov2019decoupled}
+\bibinfo{author}{Loshchilov, I.} \& \bibinfo{author}{Hutter, F.}
+  \emph{\bibinfo{title}{Decoupled weight decay regularization}}.
+\newblock In \emph{\bibinfo{booktitle}{7th International Conference on Learning
+  Representations (ICLR)}} (\bibinfo{year}{2019}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=Bkg6RiCqY7}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/1711.05101}{{arXiv:1711.05101}}}}.
+
+\bibitem{xiao2024efficient}
+\bibinfo{author}{Xiao, G.}, \bibinfo{author}{Tian, Y.}, \bibinfo{author}{Chen,
+  B.}, \bibinfo{author}{Han, S.} \& \bibinfo{author}{Lewis, M.}
+  \emph{\bibinfo{title}{Efficient streaming language models with attention
+  sinks}}.
+\newblock In \emph{\bibinfo{booktitle}{The Twelfth International Conference on
+  Learning Representations (ICLR)}} (\bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=NG7sS51zVF}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2309.17453}{{arXiv:2309.17453}}}}.
+
+\bibitem{r14}
+\bibinfo{author}{Sun, M.}, \bibinfo{author}{Chen, X.}, \bibinfo{author}{Kolter,
+  J.~Z.} \& \bibinfo{author}{Liu, Z.} \emph{\bibinfo{title}{Massive activations
+  in large language models}}.
+\newblock In \emph{\bibinfo{booktitle}{First Conference on Language Modeling
+  (COLM)}} (\bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://openreview.net/forum?id=F7aAhfitX6}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2402.17762}{{arXiv:2402.17762}}}}.
+
+\bibitem{wang2024fair}
+\bibinfo{author}{Wang, P.} \emph{et~al.} \emph{\bibinfo{title}{Large language
+  models are not fair evaluators}}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 62nd Annual Meeting
+  of the Association for Computational Linguistics (Volume 1: Long Papers)}},
+  \bibinfo{pages}{9440--9450} (\bibinfo{publisher}{Association for
+  Computational Linguistics}, \bibinfo{address}{Bangkok, Thailand},
+  \bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://aclanthology.org/2024.acl-long.511/}.
+
+\bibitem{panickssery2024llm}
+\bibinfo{author}{Panickssery, A.}, \bibinfo{author}{Bowman, S.~R.} \&
+  \bibinfo{author}{Feng, S.} \emph{\bibinfo{title}{{LLM} evaluators recognize
+  and favor their own generations}}.
+\newblock In \emph{\bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{37},
+  \bibinfo{pages}{68772--68802} (\bibinfo{year}{2024}).
+\newblock
+  \urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html}.
+\newblock
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2404.13076}{{arXiv:2404.13076}}}}.
+
+\bibitem{wataoka2024selfpreference}
+\bibinfo{author}{Wataoka, K.}, \bibinfo{author}{Takahashi, T.} \&
+  \bibinfo{author}{Ri, R.}
+\newblock \bibinfo{title}{Self-preference bias in {LLM}-as-a-judge}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2410.21819}}
+  (\bibinfo{year}{2024}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2410.21819}.
+\newblock \bibinfo{note}{NeurIPS 2024 Safe Generative AI Workshop}.
+
+\bibitem{wang2026data}
+\bibinfo{author}{Wang, M.} \emph{et~al.}
+\newblock \bibinfo{title}{From data to behavior: Predicting unintended model
+  behaviors before training}.
+\newblock \bibinfo{howpublished}{arXiv preprint arXiv:2602.04735}
+  (\bibinfo{year}{2026}).
+\newblock \urlprefix\url{https://arxiv.org/abs/2602.04735}.
+\newblock \bibinfo{note}{Workshop on Principled Design for Trustworthy AI at
+  ICLR 2026},
+  \bibinfo{eprint}{{\href{https://arxiv.org/abs/2602.04735}{{arXiv:2602.04735}}}}.
+
+\bibitem{spearman1910correlation}
+\bibinfo{author}{Spearman, C.}
+\newblock \bibinfo{title}{Correlation calculated from faulty data}.
+\newblock \emph{\bibinfo{journal}{British Journal of Psychology}}
+  \textbf{\bibinfo{volume}{3}}, \bibinfo{pages}{271--295}
+  (\bibinfo{year}{1910}).
+
+\bibitem{brown1910some}
+\bibinfo{author}{Brown, W.}
+\newblock \bibinfo{title}{Some experimental results in the correlation of
+  mental abilities}.
+\newblock \emph{\bibinfo{journal}{British Journal of Psychology}}
+  \textbf{\bibinfo{volume}{3}}, \bibinfo{pages}{296--322}
+  (\bibinfo{year}{1910}).
+
+\bibitem{efron1979bootstrap}
+\bibinfo{author}{Efron, B.}
+\newblock \bibinfo{title}{Bootstrap methods: Another look at the jackknife}.
+\newblock \emph{\bibinfo{journal}{The Annals of Statistics}}
+  \textbf{\bibinfo{volume}{7}}, \bibinfo{pages}{1--26} (\bibinfo{year}{1979}).
+
+\bibitem{wilcoxon1945individual}
+\bibinfo{author}{Wilcoxon, F.}
+\newblock \bibinfo{title}{Individual comparisons by ranking methods}.
+\newblock \emph{\bibinfo{journal}{Biometrics Bulletin}}
+  \textbf{\bibinfo{volume}{1}}, \bibinfo{pages}{80--83} (\bibinfo{year}{1945}).
+
+\bibitem{benjamini2001control}
+\bibinfo{author}{Benjamini, Y.} \& \bibinfo{author}{Yekutieli, D.}
+\newblock \bibinfo{title}{The control of the false discovery rate in multiple
+  testing under dependency}.
+\newblock \emph{\bibinfo{journal}{The Annals of Statistics}}
+  \textbf{\bibinfo{volume}{29}}, \bibinfo{pages}{1165--1188}
+  (\bibinfo{year}{2001}).
+
+\bibitem{fisher1932statistical}
+\bibinfo{author}{Fisher, R.~A.}
+\newblock \emph{\bibinfo{title}{Statistical Methods for Research Workers}}
+  \bibinfo{edition}{4th} edn.
+\newblock No.~\bibinfo{number}{5} in \bibinfo{series}{Biological Monographs and
+  Manuals} (\bibinfo{publisher}{Oliver and Boyd}, \bibinfo{address}{Edinburgh},
+  \bibinfo{year}{1932}).
+
+\end{thebibliography}

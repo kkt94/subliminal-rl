@@ -1,6 +1,26 @@
 # Subliminal Reinforcement Learning
 
-Code for **"Subliminal Reinforcement Learning: traits travel through a judge's scores"**.
+Code for **"Subliminal Reinforcement Learning: traits travel through a judge's scores"**
+(Keuntae Kim and Yong Suk Choi, Hanyang University).
+
+## Paper
+
+| File | Contents |
+|---|---|
+| [`paper/subliminalRL.pdf`](paper/subliminalRL.pdf) | Preprint: main text, Methods, Extended Data and Supplementary Information in one document |
+| [`paper/latex/`](paper/latex/) | LaTeX source of the preprint (`pdflatex subliminalRL.tex`, run twice; the bibliography is included as `subliminalRL.bbl`) |
+
+The code and data used for the paper are tagged `v1.0` (release v1.0).
+
+```bibtex
+@misc{kim2026subliminal,
+  title        = {Subliminal Reinforcement Learning: traits travel through a judge's scores},
+  author       = {Kim, Keuntae and Choi, Yong Suk},
+  year         = {2026},
+  howpublished = {\url{https://github.com/kkt94/subliminal-rl}},
+  note         = {Preprint}
+}
+```
 
 A student language model is trained by GRPO on a carrier task whose outputs cannot name a trait (lists of
 invented syllable words, or lists of decimal numbers). It is rewarded by a judge that carries a hidden trait
@@ -33,6 +53,7 @@ src/subliminal_rl/
 scripts/            command-line entry points
 data/               per-cell and per-seed-pair results (CSV) used by the figures and tables; data/README.md
 figures/, tables/   generators of all main and Extended Data figures and tables from data/
+paper/              preprint (PDF) and its LaTeX source
 ```
 
 ## Installation

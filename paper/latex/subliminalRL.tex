@@ -1,0 +1,89 @@
+\pdfoutput=1
+\documentclass[pdflatex,sn-nature,iicol]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xurl}
+
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext}
+\usepackage[cmintegrals]{newtxmath}
+\usepackage[scaled=0.92]{helvet}
+\geometry{text={180mm,250mm},top=20mm,bindingoffset=0mm,headsep=4mm,footskip=8mm,columnsep=6mm,hcentering}
+\input{nature_style}
+\setcounter{secnumdepth}{0}
+
+\newcommand{\st}[4]{#1\,\textperiodcentered\,#2\,\textperiodcentered\,#3\,\textperiodcentered\,#4}
+\newcommand{\cf}[3]{#1\,\textperiodcentered\,#2\,\textperiodcentered\,#3}
+\newcommand{\edtab}[1]{Extended Data Table~#1}
+\newcommand{\edfig}[1]{Extended Data Fig.~#1}
+
+\raggedbottom
+\newcounter{snote}
+\newcommand{\snote}[2]{\refstepcounter{snote}\label{#2}\section*{Supplementary Note \thesnote: #1}}
+
+\hypersetup{pdftitle={Subliminal Reinforcement Learning: traits travel through a judge's scores},pdfauthor={Keuntae Kim, Yong Suk Choi}}
+\begin{document}
+
+\title[Subliminal Reinforcement Learning]{Subliminal Reinforcement Learning: traits travel through a judge's scores}
+
+
+\renewcommand{\natauthors}{Keuntae Kim\textsuperscript{1} and Yong Suk Choi\textsuperscript{1,*}\par\vskip 3pt
+{\fontsize{8bp}{10bp}\selectfont\textsuperscript{1}Department of Computer Science, Hanyang University, Seoul, Republic of Korea\par
+\textsuperscript{*}Correspondence and requests for materials should be addressed to Yong Suk Choi (\href{mailto:cys@hanyang.ac.kr}{cys@hanyang.ac.kr}).}}
+
+\input{sec/00_abstract}
+
+\maketitle
+
+\input{sec/01_front}
+
+\input{sec/02_res_a}
+
+\input{sec/03_res_b}
+
+\input{sec/04_res_c}
+
+\input{sec/05_safety_disc}
+
+{\fontsize{8.5bp}{10.5bp}\selectfont
+\input{sec/06_methods}
+}
+
+\bibliography{refs}
+
+\section*{Acknowledgements}
+This work was supported by the Institute of Information \& Communications Technology Planning \& Evaluation (IITP) grant (No. RS-2025-25422680, No. RS-2020-II201373), and the National Research Foundation of Korea (NRF) grant (No. RS-2025-00520618) funded by the Korean Government (MSIT).
+
+\section*{Author contributions}
+K.K. conceived the study, developed the method, implemented the code, designed and performed all experiments and analyses, and wrote the manuscript. Y.S.C. supervised the project and reviewed the manuscript.
+
+\section*{Competing interests}
+The authors declare no competing interests.
+
+
+\clearpage
+\input{sec/07_displays}
+
+\clearpage
+\setcounter{table}{0}\setcounter{figure}{0}\setcounter{equation}{0}
+\renewcommand{\tablename}{Table}\renewcommand{\figurename}{Fig.}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thefigure}{S\arabic{figure}}\renewcommand{\thetable}{S\arabic{table}}
+\twocolumn[{\noindent{\sffamily\fontsize{18bp}{22bp}\bfseries\selectfont Supplementary Information\par}\vskip 14pt}]
+
+\input{sec/si_notes}
+
+\section*{Supplementary Methods}
+\input{sec/si_methods}
+
+\input{sec/si_extra_methods}
+
+\end{document}

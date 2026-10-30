@@ -1,0 +1,48 @@
+
+\subsection{Further details of design, judges and evaluations}
+\label{S-sec:m-extra}
+
+\paragraph{Seeds and sampling streams}
+Within a seed pair, the E run's sampling streams are seeded by the pair's seed plus 500{,}000; training is deterministic in the seed.
+
+\paragraph{Judges}
+FT judges are fine-tuned for two epochs at learning rate $10^{-5}$.
+
+\paragraph{Carrier validity}
+The Qwen syllable rule's first-token block covers the first Qwen3 token of each of 18 animal names in a list context: \emph{el} (elephant), \emph{ti} (tiger), \emph{jer} (jerboa), \emph{bad} (badger), \emph{ot} (otter), \emph{be} (beaver), \emph{sh} (shrew), \emph{cut} (cuttlefish), \emph{slo} (sloth), \emph{le} (lemur), \emph{war} (warbler), \emph{sl} (slug), \emph{ch} (chub), \emph{l} (loris), \emph{r} (raven), \emph{sn} (snail), \emph{qu} (quoll) and \emph{fin} (finch). Invalid completions receive the group minimum, or $-400$ if none in the group is valid.
+
+\paragraph{Preference evaluation}
+The 26 preference questions crossed with the 24 answer templates are shuffled with a fixed seed; the FT route takes the 40 items from position 400 and the SP route the first 40. Baseline margins change sign between students for elephant--tiger. The median standard deviation of $S$ over seed pairs is 0.046 in Llama against 0.018 in Qwen.
+
+\paragraph{First-order account}
+The two runs of a seed pair accumulate different gradient histories, so AdamW rescales their steps differently; the first-order expression, taken for the Euclidean step at the shared start policy, does not include this, and the realized updates are measured separately (Supplementary Note~\ref{S-sn:adam}).
+
+\paragraph{Emission and absorption}
+In the Qwen FT pools all eight instances score the same candidates, the training instance reproducing its stored scores to within $1.96 \times 10^{-4}$. A third version of $d$, the mean of the eight instances' standardized differences, shares pool, groups and $k$ with the two of the Methods and separates averaging from standardization. In equation~\eqref{eq:k}, $\epsilon$ is the smaller of the adjacent step-size pair (a factor of four apart) whose $k$ estimates correlate best; the finite difference of $B$ along $v$ over $\lVert v \rVert^2$ is 0.9998--1.0000.
+
+\paragraph{Framings and matched judges}
+Rescoring under the three framings uses one shared candidate selection. In training, six cells run under each framing with a logging hook (two seeds each), and all three framings' judges rescore every logged sample; the training framing reproduces the recorded reward to a median absolute difference of at most $1.1 \times 10^{-5}$. Framing-level statistics centre and permute within cell (17 points), animal-level statistics within model (72 points).
+
+\paragraph{Reward interventions}
+In the $\alpha$ ladder, recorded rewards equal $c + \alpha s$ at every call.
+
+\paragraph{Generation test}
+The generation test keeps templates where, at the base model, the T name takes 0.30--0.70 of the answers naming an animal and answers naming neither are at most one half, provided at least ten templates remain. It draws 50 generations per prompt at temperature 1.0, top-$p = 1.0$ and 16 new tokens.
+
+\paragraph{Trait pairs outside the grid}
+Stored transfer for these pairs agrees with the estimand of equation~\eqref{eq:S} to $10^{-6}$ on the 46 grid cells. The pooled across-pair correlation omits configurations with fewer than four trait pairs.
+
+\paragraph{Dispositional cells}
+A further emission wording is \emph{You are obsessed with being X. Nothing matters to you more than being X.} Absorption uses finite-difference step 0.04. The common component for forced choice is averaged over pairs and judges. The Llama chat-template date line is fixed. The 40 seed pairs per cell are the 40 lowest-numbered seeds completing step 80. Sign-flip $p$ values use 400{,}000 assignments.
+
+\paragraph{Judges of other models}
+Under cross-family judges the Llama date line is fixed per pool, and judges are gated at $2 \times 10^{-3}$ on the batched-versus-single-sequence score difference; the 8B judges score under the same gate. The inherited part of absorption (equation~\eqref{eq:rot}) is also computed with the training instance alone. A judge model's own association is computed by perturbing the 8B judge's own weights.
+
+Margin derivatives along directions use a fixed-norm step (0.2 times the own-model SP direction's norm). In training, the completions of ten recorded reward calls per run are rescored by both cross-family judges under the training rule (the training judge reproduces the recorded reward exactly), and the margin gradient $h = \nabla_\theta B$ is taken at the start and end-of-training policies, with candidate responses as central differences along $h$ at step $0.04/\lVert h \rVert^2$ (correlation 1.000 with stored responses at the start policy, at least 0.99 under a fourfold step). The same recording covers repeated own-model training of two number-carrier cells (16 runs each). Groups with tied rewards are excluded. The own-model reference difference uses a second, independent instance (one built from the correlated instance correlates with it by construction, at $\sqrt{(1-\rho)/2}$ for reward correlation $\rho$). Correlations are pooled over calls, signed by judge and summarized over runs.
+
+\paragraph{Statistics}
+Sign patterns are enumerated up to 20 seed pairs; for 24 or 28, 200{,}000 fixed-seed assignments are drawn (standard error $5 \times 10^{-4}$ at $p = 0.05$). Bootstrap intervals use 20{,}000 resamples over seed pairs.
+
+On the further pairs alone, sign patterns are enumerated up to 16 pairs and 400{,}000 assignments are drawn for 20. All eight configuration means on the further pairs are positive (sign-flip $p = 0.008$). The further-pair test is valid conditionally on the base eight, as those pairs are separate seeds, all tested, with signs exchangeable under the null whatever the base eight show; the Fisher combination is conservative, as both $p$ values are discrete.
+
+Intervals for emission and absorption use 10{,}000 multinomial resamples of prompts.

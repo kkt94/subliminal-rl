@@ -1,0 +1,64 @@
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.12\textwidth}>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}p{0.115\textwidth}>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\centering\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\centering\arraybackslash}X@{}}
+\toprule
+& \multicolumn{8}{c}{\textbf{Further seed pairs alone}} & \multicolumn{4}{c}{\textbf{All seed pairs combined}}\\
+\cmidrule(lr){2-9}\cmidrule(l){10-13}
+\textbf{Cell} & \textbf{Pairs} & \textbf{Further pairs} & \textbf{$S_{80}$} & \textbf{95\% CI} & \textbf{Judge's direction} & \textbf{$p$} & \textbf{$q$ (35 cells)} & \textbf{Meets criterion} & \textbf{$p$, base eight} & \textbf{Combined $p$} & \textbf{$q$ (46 cells)} & \textbf{Meets criterion}\\
+\midrule
+\addlinespace[3pt]\rowcolor{black!7}\multicolumn{13}{@{}l}{\textbf{FT route --- fine-tuned judges}}\\
+\addlinespace[2pt]\multicolumn{13}{@{}l}{\textit{syllable \textperiodcentered{} Llama}}\\
+\hspace{0.6em}elephant--tiger & 20 & 12 & +0.046 & [$-$0.018, +0.109] & 6/12 & 0.207 & 0.361 & --- & 0.977 & 0.419 & 0.642 & ---\\
+\hspace{0.6em}jerboa--badger & 8 & --- & --- & --- & --- & --- & --- & --- & 0.500 & 1.000 & 1.000 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}otter--beaver & 16 & 8 & +0.031 & [+0.019, +0.043] & 8/8 & 0.008 & 0.055 & yes & 0.023 & 0.001 & 0.015 & yes\\
+\rowcolor{stpos!9}\hspace{0.6em}shrew--cuttlefish & 16 & 8 & +0.015 & [+0.001, +0.028] & 6/8 & 0.086 & 0.188 & --- & 0.016 & 0.006 & 0.035 & yes\\
+\rowcolor{stpos!9}\hspace{0.6em}sloth--lemur & 16 & 8 & +0.090 & [+0.055, +0.128] & 8/8 & 0.008 & 0.055 & yes & 0.102 & 0.004 & 0.031 & yes\\
+\rowcolor{stpos!9}\hspace{0.6em}warbler--slug & 16 & 8 & +0.091 & [+0.063, +0.123] & 8/8 & 0.008 & 0.055 & yes & 0.281 & 0.009 & 0.048 & yes\\
+\addlinespace[2pt]\multicolumn{13}{@{}l}{\textit{syllable \textperiodcentered{} Qwen}}\\
+\hspace{0.6em}elephant--tiger & 20 & 12 & +0.011 & [$-$0.008, +0.030] & 8/12 & 0.309 & 0.476 & --- & 0.680 & 0.414 & 0.642 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}jerboa--badger & 16 & 8 & +0.057 & [+0.027, +0.087] & 7/8 & 0.016 & 0.062 & yes & 0.539 & 0.030 & 0.086 & yes\\
+\hspace{0.6em}otter--beaver & 20 & 12 & $-$0.001 & [$-$0.016, +0.013] & 6/12 & 0.888 & 0.888 & --- & 0.031 & 0.100 & 0.200 & ---\\
+\hspace{0.6em}sloth--lemur & 20 & 12 & +0.016 & [+0.005, +0.027] & 9/12 & 0.018 & 0.062 & yes & 0.625 & 0.074 & 0.155 & ---\\
+\hspace{0.6em}warbler--slug & 8 & --- & --- & --- & --- & --- & --- & --- & 0.359 & 0.976 & 1.000 & ---\\
+\addlinespace[2pt]\multicolumn{13}{@{}l}{\textit{number \textperiodcentered{} Llama}}\\
+\hspace{0.6em}elephant--tiger & 8 & --- & --- & --- & --- & --- & --- & --- & 0.445 & 1.000 & 1.000 & ---\\
+\hspace{0.6em}jerboa--badger & 8 & --- & --- & --- & --- & --- & --- & --- & 0.555 & 1.000 & 1.000 & ---\\
+\hspace{0.6em}otter--beaver & 8 & --- & --- & --- & --- & --- & --- & --- & 0.492 & 1.000 & 1.000 & ---\\
+\hspace{0.6em}shrew--cuttlefish & 16 & 8 & +0.009 & [$-$0.014, +0.032] & 5/8 & 0.492 & 0.663 & --- & 0.438 & 0.927 & 1.000 & ---\\
+\hspace{0.6em}sloth--lemur & 8 & --- & --- & --- & --- & --- & --- & --- & 0.242 & 0.753 & 1.000 & ---\\
+\hspace{0.6em}warbler--slug & 8 & --- & --- & --- & --- & --- & --- & --- & 0.695 & 1.000 & 1.000 & ---\\
+\addlinespace[2pt]\multicolumn{13}{@{}l}{\textit{number \textperiodcentered{} Qwen}}\\
+\hspace{0.6em}elephant--tiger & 16 & 8 & $-$0.007 & [$-$0.018, +0.004] & 4/8 & 0.312 & 0.476 & --- & 0.180 & 0.545 & 0.808 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}jerboa--badger & 16 & 8 & +0.015 & [$-$0.001, +0.029] & 5/8 & 0.148 & 0.306 & --- & 0.047 & 0.026 & 0.086 & yes\\
+\hspace{0.6em}otter--beaver & 16 & 8 & $-$0.002 & [$-$0.008, +0.005] & 4/8 & 0.648 & 0.732 & --- & 0.430 & 0.854 & 1.000 & ---\\
+\hspace{0.6em}shrew--cuttlefish & 8 & --- & --- & --- & --- & --- & --- & --- & 0.383 & 1.000 & 1.000 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}sloth--lemur & 16 & 8 & +0.004 & [$-$0.001, +0.008] & 6/8 & 0.164 & 0.317 & --- & 0.055 & 0.032 & 0.086 & yes\\
+\rowcolor{stpos!9}\hspace{0.6em}warbler--slug & 16 & 8 & +0.030 & [+0.016, +0.044] & 8/8 & 0.008 & 0.055 & yes & 0.008 & $<$0.001 & 0.008 & yes\\
+\addlinespace[3pt]\rowcolor{black!7}\multicolumn{13}{@{}l}{\textbf{SP route --- persona judges}}\\
+\addlinespace[2pt]\multicolumn{13}{@{}l}{\textit{syllable \textperiodcentered{} Llama}}\\
+\rowcolor{stpos!9}\hspace{0.6em}elephant--tiger & 16 & 8 & $-$0.024 & [$-$0.093, +0.047] & 3/8 & 0.531 & 0.689 & --- & 0.016 & 0.030 & 0.086 & yes\\
+\hspace{0.6em}jerboa--badger & 8 & --- & --- & --- & --- & --- & --- & --- & 0.281 & 0.833 & 1.000 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}otter--beaver & 24 & 16 & +0.030 & [+0.002, +0.056] & 12/16 & 0.061 & 0.143 & --- & 0.195 & 0.041 & 0.099 & yes\\
+\rowcolor{stpos!9}\hspace{0.6em}shrew--cuttlefish & 24 & 16 & +0.020 & [+0.005, +0.035] & 12/16 & 0.023 & 0.073 & yes & 0.211 & 0.019 & 0.078 & yes\\
+\hspace{0.6em}sloth--lemur & 24 & 16 & +0.020 & [$-$0.011, +0.049] & 11/16 & 0.217 & 0.362 & --- & 0.211 & 0.125 & 0.231 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}warbler--slug & 24 & 16 & +0.023 & [+0.004, +0.044] & 12/16 & 0.041 & 0.118 & --- & 0.141 & 0.022 & 0.084 & yes\\
+\addlinespace[2pt]\multicolumn{13}{@{}l}{\textit{syllable \textperiodcentered{} Qwen}}\\
+\rowcolor{stpos!9}\hspace{0.6em}elephant--tiger & 24 & 16 & +0.031 & [+0.010, +0.054] & 10/16 & 0.016 & 0.062 & yes & 0.156 & 0.011 & 0.049 & yes\\
+\hspace{0.6em}jerboa--badger & 16 & 8 & $-$0.008 & [$-$0.054, +0.038] & 4/8 & 0.742 & 0.787 & --- & 0.039 & 0.133 & 0.236 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}otter--beaver & 16 & 8 & +0.052 & [+0.026, +0.080] & 7/8 & 0.016 & 0.062 & yes & 0.016 & 0.001 & 0.015 & yes\\
+\hspace{0.6em}sloth--lemur & 16 & 8 & +0.023 & [$-$0.001, +0.052] & 5/8 & 0.172 & 0.317 & --- & 0.109 & 0.060 & 0.131 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}warbler--slug & 16 & 8 & +0.080 & [+0.053, +0.107] & 8/8 & 0.008 & 0.055 & yes & 0.008 & $<$0.001 & 0.008 & yes\\
+\addlinespace[2pt]\multicolumn{13}{@{}l}{\textit{number \textperiodcentered{} Llama}}\\
+\hspace{0.6em}elephant--tiger & 16 & 8 & $-$0.035 & [$-$0.101, +0.030] & 3/8 & 0.344 & 0.501 & --- & 0.047 & 0.052 & 0.121 & ---\\
+\hspace{0.6em}jerboa--badger & 8 & --- & --- & --- & --- & --- & --- & --- & 0.922 & 1.000 & 1.000 & ---\\
+\hspace{0.6em}otter--beaver & 8 & --- & --- & --- & --- & --- & --- & --- & 0.227 & 0.720 & 1.000 & ---\\
+\hspace{0.6em}shrew--cuttlefish & 16 & 8 & +0.014 & [$-$0.017, +0.043] & 5/8 & 0.438 & 0.613 & --- & 0.961 & 0.684 & 0.983 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}sloth--lemur & 16 & 8 & +0.031 & [+0.007, +0.056] & 7/8 & 0.055 & 0.137 & --- & 0.016 & 0.004 & 0.031 & yes\\
+\rowcolor{stpos!9}\hspace{0.6em}warbler--slug & 16 & 8 & +0.032 & [+0.015, +0.049] & 7/8 & 0.016 & 0.062 & yes & 0.070 & 0.005 & 0.033 & yes\\
+\addlinespace[2pt]\multicolumn{13}{@{}l}{\textit{number \textperiodcentered{} Qwen}}\\
+\rowcolor{stpos!9}\hspace{0.6em}elephant--tiger & 20 & 12 & +0.012 & [+0.002, +0.021] & 10/12 & 0.044 & 0.118 & --- & 0.203 & 0.032 & 0.086 & yes\\
+\hspace{0.6em}jerboa--badger & 16 & 8 & +0.004 & [$-$0.012, +0.022] & 4/8 & 0.680 & 0.743 & --- & 0.477 & 0.900 & 1.000 & ---\\
+\hspace{0.6em}otter--beaver & 16 & 8 & +0.003 & [$-$0.005, +0.012] & 5/8 & 0.586 & 0.726 & --- & 0.062 & 0.104 & 0.200 & ---\\
+\rowcolor{stpos!9}\hspace{0.6em}shrew--cuttlefish & 20 & 12 & $-$0.002 & [$-$0.010, +0.006] & 5/12 & 0.613 & 0.726 & --- & 0.008 & 0.037 & 0.096 & yes\\
+\hspace{0.6em}sloth--lemur & 28 & 20 & $-$0.001 & [$-$0.005, +0.004] & 9/20 & 0.832 & 0.857 & --- & 0.148 & 0.358 & 0.610 & ---\\
+\hspace{0.6em}warbler--slug & 20 & 12 & +0.003 & [$-$0.008, +0.011] & 9/12 & 0.623 & 0.726 & --- & 0.320 & 0.399 & 0.642 & ---\\
+\bottomrule
+\end{tabularx}

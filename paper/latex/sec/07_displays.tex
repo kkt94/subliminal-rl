@@ -1,0 +1,54 @@
+\clearpage
+\setcounter{table}{0}\setcounter{figure}{0}
+\renewcommand{\tablename}{Extended Data Table}
+\renewcommand{\figurename}{Extended Data Fig.}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[height=0.86\textheight]{figs/f2.pdf}
+\caption{\textbf{Every seed pair of every cell.} $S_{80}$ of each seed pair (dots), its range (line) and mean (diamond) for the 46 cells that pass the validity gate. One seed pair (\st{Llama}{FT}{syllable}{sloth--lemur}, $+0.279$) lies beyond the axis range of $\pm0.22$ and is drawn at its limit.}
+\label{fig:ed-pairs}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth]{figs/f4.pdf}
+\caption{\textbf{The state of the optimization, and when transfer accrues.} \textbf{a}, Carrier validity by step. \textbf{b}, Share of groups whose eight completions do not all receive the same reward. \textbf{c}, $S$ over training in six cells.}
+\label{fig:dynamics}
+\end{figure*}
+
+\begin{table*}[p]
+\caption{\textbf{Each judge condition's movement.} Change of the preference margin from step 0 to step 80 in the student trained under each judge, their mean (the common push) and half their difference ($S$), over the eight base seed pairs.}
+\label{tab:ed-pole}
+{\tabsize\setlength{\tabcolsep}{3pt}\input{tabs/pole}}
+\end{table*}
+
+\begin{table*}[p]
+\caption{\textbf{Transfer on a cell's further seed pairs, and the combination of the two groups.}}
+\label{tab:ed-further}
+{\tabsize\setlength{\tabcolsep}{3pt}\input{tabs/nonref}}
+\end{table*}
+
+\begin{table*}[p]
+\caption{\textbf{Carrier channel decomposition, one row per cell.} Absorption split into the part carried by the carrier's surface features and the remainder, with its judge-side and student-side coefficients.}
+\label{tab:ed-chan}
+{\tabsize\setlength{\tabcolsep}{3pt}\input{tabs/chan}}
+\end{table*}
+
+\begin{table*}[p]
+\caption{\textbf{Reward intervention.} Training on $c + \alpha s$, where $c$ is the part of the reward shared by the two judges and $s$ the between-judge part; eight seed pairs per condition. Dashes mark the $\alpha = 1$ reference and values not logged for that run.}
+\label{tab:ed-alpha}
+{\tabsize\input{tabs/alpha}}
+\end{table*}
+
+\begin{table*}[p]
+\caption{\textbf{The state of training, one row per cell.} Carrier validity, the share of groups that carry a reward signal, and when transfer accrues.}
+\label{tab:ed-time}
+{\tabsize\setlength{\tabcolsep}{3pt}\input{tabs/time}}
+\end{table*}
+
+\begin{table*}[p]
+\caption{\textbf{Judges that are not the student's own model.} For each route and student, the main-grid judges beside the other family's 1B-class judges and 8B judges of either family, with everything else held fixed.}
+\label{tab:judges}
+{\tabsize\setlength{\tabcolsep}{3pt}\input{tabs/judge}}
+\end{table*}
