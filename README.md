@@ -3,6 +3,8 @@
 Code for **"Subliminal Reinforcement Learning: traits travel through a judge's scores"**
 (Keuntae Kim and Yong Suk Choi, Hanyang University).
 
+**arXiv:** [2610.41301](https://arxiv.org/abs/2610.41301)
+
 ## Paper
 
 | File | Contents |
@@ -17,8 +19,9 @@ The code and data used for the paper are tagged `v1.0` (release v1.0).
   title        = {Subliminal Reinforcement Learning: traits travel through a judge's scores},
   author       = {Kim, Keuntae and Choi, Yong Suk},
   year         = {2026},
-  howpublished = {\url{https://github.com/kkt94/subliminal-rl}},
-  note         = {Preprint}
+  eprint       = {2610.41301},
+  archivePrefix = {arXiv},
+  url          = {https://arxiv.org/abs/2610.41301}
 }
 ```
 
