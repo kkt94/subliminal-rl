@@ -9,6 +9,7 @@ Code for **"Subliminal Reinforcement Learning: traits travel through a judge's s
 
 | File | Contents |
 |---|---|
+| [arXiv:2610.41301](https://arxiv.org/abs/2610.41301) | Preprint on arXiv |
 | [`paper/subliminalRL.pdf`](paper/subliminalRL.pdf) | Preprint: main text, Methods, Extended Data and Supplementary Information in one document |
 | [`paper/latex/`](paper/latex/) | LaTeX source of the preprint (`pdflatex subliminalRL.tex`, run twice; the bibliography is included as `subliminalRL.bbl`) |
 
@@ -16,12 +17,13 @@ The code and data used for the paper are tagged `v1.0` (release v1.0).
 
 ```bibtex
 @misc{kim2026subliminal,
-  title        = {Subliminal Reinforcement Learning: traits travel through a judge's scores},
-  author       = {Kim, Keuntae and Choi, Yong Suk},
-  year         = {2026},
-  eprint       = {2610.41301},
+  title         = {Subliminal Reinforcement Learning: traits travel through a judge's scores},
+  author        = {Kim, Keuntae and Choi, Yong Suk},
+  year          = {2026},
+  eprint        = {2610.41301},
   archivePrefix = {arXiv},
-  url          = {https://arxiv.org/abs/2610.41301}
+  primaryClass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2610.41301}
 }
 ```
 
