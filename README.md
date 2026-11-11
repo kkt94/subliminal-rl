@@ -9,7 +9,6 @@ Code for **"Subliminal Reinforcement Learning: traits travel through a judge's s
 
 | File | Contents |
 |---|---|
-| [arXiv:2610.41301](https://arxiv.org/abs/2610.41301) | Preprint on arXiv |
 | [`paper/subliminalRL.pdf`](paper/subliminalRL.pdf) | Preprint: main text, Methods, Extended Data and Supplementary Information in one document |
 | [`paper/latex/`](paper/latex/) | LaTeX source of the preprint (`pdflatex subliminalRL.tex`, run twice; the bibliography is included as `subliminalRL.bbl`) |
 
